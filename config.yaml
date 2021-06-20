@@ -1,5 +1,5 @@
-baseurl: https://example.com
-languageCode: en-us
+baseurl: https://recordnote.github.io/
+languageCode: zh-cn
 theme: hugo-theme-stack
 paginate: 5
 title: Aaron
@@ -12,7 +12,7 @@ googleAnalytics:
 
 # Theme i18n support
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn, es, de, nl
-DefaultContentLanguage: en
+DefaultContentLanguage: zh-cn
 
 permalinks:
     post: /p/:slug/
