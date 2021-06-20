@@ -1,5 +1,5 @@
 baseurl: https://recordnote.github.io/
-languageCode: zh-cn
+languageCode: en-us
 theme: hugo-theme-stack
 paginate: 5
 title: Aaron
@@ -12,7 +12,7 @@ googleAnalytics:
 
 # Theme i18n support
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn, es, de, nl
-DefaultContentLanguage: zh-cn
+DefaultContentLanguage: en
 
 permalinks:
     post: /p/:slug/
@@ -48,7 +48,7 @@ params:
 
     comments:
         enabled: true
-        provider: disqus
+        provider: vssue
 
         utterances:
             repo:
