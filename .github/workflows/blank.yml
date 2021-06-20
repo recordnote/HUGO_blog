@@ -1,0 +1,27 @@
+name: CI #自动化的名称
+on:
+  push: # push的时候触发
+    branches: # 那些分支需要触发
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest # 镜像市场
+    steps:
+      - name: checkout # 步骤的名称
+        uses: actions/checkout@v2.3.4 #软件市场的名称
+        with: # 参数
+          submodules: true
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2.4.13
+        with:
+          hugo-version: '0.84.0'
+          extended: true
+      - name: Build
+        run: hugo -D
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3.8.0
+        env:
+          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          EXTERNAL_REPOSITORY: recordnote/recordnote.github.io
+          PUBLISH_BRANCH: master
+          PUBLISH_DIR: ./public
