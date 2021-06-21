@@ -8,7 +8,7 @@ copyright = '<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa
 
 googleAnalytics = "UA-98295641-1"
 
-disqusShortname = "Aaron"
+#disqusShortname = "aaron"
 
 enableRobotsTXT = true
 
@@ -42,7 +42,7 @@ hasCJKLanguage = true
 
   author = "Aaron"
   description = "Aaron 的生活记录～"
-  avatar = "/me/avatar.png"
+  avatar = "/me/yy.jpg"
   headerTitle = "Aaron 的博客"
   motto = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
   # maxTags = 5
@@ -53,7 +53,7 @@ hasCJKLanguage = true
 
   rss = true
 
-  utterancesRepo = "keeptime/aaron.github.io"
+  utterancesRepo = "recordnote/recordnote.github.io"
 
   # valine = true
   # LEANCLOUD_APP_ID = ""
