@@ -1,0 +1,1 @@
+local：hugo server --theme=hugo-theme-dream --buildDrafts --watch
