@@ -71,7 +71,7 @@ hasCJKLanguage = true
 
   siteStartYear = 2016
 
-  favicon = "/favicon.ico"
+  favicon = "/favicon.png"
 
   highlightjs = true
   # highlightjsCDN = "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js"
