@@ -21,5 +21,5 @@ weight: 1
 
 测试图片显示
 
-![image-20210706144154681](test/image-20210706144154681.png)
+![image-20210706161152013](https://gitee.com/aaronlynn/picture/raw/master/img/image-20210706161152013.png)
 
