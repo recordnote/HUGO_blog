@@ -23,21 +23,21 @@ Actuator使用Micrometer来整合上面提到的外部应用监控系统。这�
 
 ### 1.1 配置：
 
-<img src="spring-actuator/image-20210703143626695.png" alt="image-20210703143626695" style="zoom: 67%;" /> 
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210703143626695.png" alt="image-20210703143626695" style="zoom: 67%;" /> 
 
 ### 1.2 端点表：
 
-![image-20210703143709818](spring-actuator/image-20210703143709818.png) 
+![image-20210703143709818](https://gitee.com/aaronlynn/picture/raw/master/img/image-20210703143709818.png) 
 
 ### 1.3 自定义指定外部配置（**IDE配置优先级>配置文件优先级**）
 
-<img src="spring-actuator/image-20210703145502830.png" alt="image-20210703145502830" style="zoom:67%;" /> 
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210703145502830.png" alt="image-20210703145502830" style="zoom:67%;" /> 
 
-<img src="spring-actuator/image-20210703145438334.png" alt="image-20210703145438334" style="zoom:67%;" /> 
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210703145438334.png" alt="image-20210703145438334" style="zoom:67%;" /> 
 
 ## 2、Profile的使用（环境切换配置）
 
-<img src="spring-actuator/image-20210703150924732.png" alt="image-20210703150924732" style="zoom:80%;" /> 
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210703150924732.png" alt="image-20210703150924732" style="zoom:80%;" /> 
 
 <img src="spring-actuator/image-20210703151016599.png" alt="image-20210703151016599" style="zoom:80%;" /> 
 
@@ -45,12 +45,12 @@ Actuator使用Micrometer来整合上面提到的外部应用监控系统。这�
 
 PS：此处active可用include替换，但include 包含的profile会**无条件的active**, 而active 包含的profile 有可能会被优先级高的定义覆盖
 
-<img src="spring-actuator/image-20210703151252215.png" alt="image-20210703151252215" style="zoom:80%;" /> 
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210703151252215.png" alt="image-20210703151252215" style="zoom:80%;" /> 
 
 **原则：公用的放公用的文件中，私用放私用的文件。**
 
-<img src="spring-actuator/image-20210703152534646.png" alt="image-20210703152534646" style="zoom: 67%;" /> 
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210703152534646.png" alt="image-20210703152534646" style="zoom: 67%;" /> 
 
-<img src="spring-actuator/image-20210703152547602.png" alt="image-20210703152547602" style="zoom:67%;" /> 
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210703152547602.png" alt="image-20210703152547602" style="zoom:67%;" /> 
 
-<img src="spring-actuator/image-20210703152555911.png" alt="image-20210703152555911" style="zoom: 67%;" /> 
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210703152555911.png" alt="image-20210703152555911" style="zoom: 67%;" /> 
