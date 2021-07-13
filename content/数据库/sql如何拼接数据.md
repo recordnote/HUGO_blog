@@ -22,7 +22,7 @@ weight: 1
 
    在MySQL中支持使用加号拼接结果。在两个字段都是整型时，都会返回两个整型值得和，但是在两个字段中有一个为字符串时，MySQL的返回结果不是拼接两字符串，而是默认字符串为零，再返回两个字段之和。
 
-~~~ mysql
+~~~ java
 //返回157
 select Score2 + Score1 FROM mytable where ID = 1 ;
 //返回90
@@ -34,7 +34,7 @@ select Name + Score1 from mytable where ID = 1 ;
 
    CONTACT的功能是直接将数据按照字符串格式拼接，类似于Sql Server中加号拼接字符串的功能。
 
-~~~ mysql
+~~~ java
 select CONCAT(ID,Name,Score1) from MyTable where ID = 1;
 //返回值为 1A90;
 ps：CONCAT后面括号中的参数只要有一个值为null，整个函数的返回值就会为null。
@@ -46,7 +46,7 @@ ps：CONCAT后面括号中的参数只要有一个值为null，整个函数的�
 
    CONOCAT_WS的用法和CONCAT类似，但是它的第一个参数为分隔符，在返回的值中，每一个参数之间都会有第一个参数作为分隔。
 
-~~~ mysql
+~~~ java
 select CONCAT_WS('-',ID,Name,Score1) from MyTable where ID = 1;
 //返回值为 1-A-90;
    如果CONCAT_WS的第一个参数为null，则返回值为null，如果后面的参数中有null，则这些参数会被忽略，只返回其他参数和分隔符组成的字符串。
@@ -61,7 +61,7 @@ select CONCAT_WS('-',ID,Name,Score1) from MyTable where ID = 1;
 
 函数语法如下：group_concat( 要连接的字段 )  [Order BY 排序字段 ASC/DESC]   [Separator '分隔符'] 
 
-~~~ mysql
+~~~ java
 select Name,GROUP_CONCAT(Score1 Separator '-') FROM MyTable GROUP BY Name;
 -- 其中GROUP BY 后面的字段是Name，所有同一排序字段的数据会被拼接后存入同一字段中，并以相应的分隔符分分隔。
   
@@ -75,7 +75,7 @@ select Name,GROUP_CONCAT(Score1 Separator '-') FROM MyTable GROUP BY Name;
 
    ps：GROUP_CONCAT是有长度限制的，MySQL对其的默认长度限制为1024，可以使用如下语句来进行修改长度：
 
-~~~ mysql
+~~~ java
 SHOW VARIABLES LIKE "%group_concat_max_len%"//查看长度
 
 SET SESSION group_concat_max_len = 102400; //修改长度
