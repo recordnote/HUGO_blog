@@ -16,11 +16,11 @@ weight: 1
 
 ### 1、hash和hash表是什么？　　　
 
-​	想要知道这个hashcode，首先得知道hash，通过百度百科看一下
+​		想要知道这个hashcode，首先得知道hash，通过百度百科看一下
 
-<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210714203416559.png" alt="img" style="zoom: 50%;" /> 
+​             <img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210714203416559.png" alt="img" style="zoom: 50%;" />	 
 
-​	<img src="https://gitee.com/aaronlynn/picture/raw/master/img/874710-20161116202950092-1019467368.png" alt="img" style="zoom: 80%;" />  
+​	  <img src="https://gitee.com/aaronlynn/picture/raw/master/img/874710-20161116202950092-1019467368.png" alt="img" style="zoom: 80%;" />  
 
 ​		hash是一个函数，该函数中的实现就是一种算法，就是通过一系列的算法来得到一个hash值，这个时候，我们就需要知道另一个东西，hash表，通过hash算法得到的hash值就在这张hash表中，也就是说，hash表就是所有的hash值组成的，有很多种hash函数，也就代表着有很多种算法得到hash值，如上面截图的三种，等会我们就拿第一种来说。
 
