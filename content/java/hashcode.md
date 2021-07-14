@@ -4,9 +4,7 @@ date: 2021-01-23T14:21:26+08:00
 lastmod: 2021-01-23T14:21:26+08:00
 author: Aaron
 avatar: /me/yy.jpg
-cover: /img/
-images:
-  - /img/java.jpg
+cover: /img/java.jpg
 categories:
   - Java
 tags:
@@ -20,7 +18,9 @@ weight: 1
 
 ​	想要知道这个hashcode，首先得知道hash，通过百度百科看一下
 
-​	<img src="C:/Users/Aaron/AppData/Roaming/Typora/typora-user-images/image-20210714203416559.png" alt="image-20210714203416559" style="zoom:67%;" /><img src="https://gitee.com/aaronlynn/picture/raw/master/img/874710-20161116202950092-1019467368.png" alt="img" style="zoom: 80%;" />
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210714203416559.png" alt="img" style="zoom: 50%;" /> 
+
+​	<img src="https://gitee.com/aaronlynn/picture/raw/master/img/874710-20161116202950092-1019467368.png" alt="img" style="zoom: 80%;" />  
 
 ​		hash是一个函数，该函数中的实现就是一种算法，就是通过一系列的算法来得到一个hash值，这个时候，我们就需要知道另一个东西，hash表，通过hash算法得到的hash值就在这张hash表中，也就是说，hash表就是所有的hash值组成的，有很多种hash函数，也就代表着有很多种算法得到hash值，如上面截图的三种，等会我们就拿第一种来说。
 
@@ -58,26 +58,24 @@ weight: 1
 
 ## 四、为什么equals方法重写的话，建议也一起重写hashcode方法？
 
-​	如果对象的equals方法被重写，那么对象的HashCode方法也尽量重写）
+​		如果对象的equals方法被重写，那么对象的HashCode方法也尽量重写）
 
-​	举个例子，其实就明白了这个道理，
+​		举个例子，其实就明白了这个道理，
 
-比如：有个A类重写了equals方法，但是没有重写hashCode方法，看输出结果，对象a1和对象a2使用equals方法相等，按照上面的hashcode的用法，那么他们两个的hashcode肯定相等，但是这里由于没重写hashcode方法，他们两个hashcode并不一样，所以，我们在重写了equals方法后，尽量也重写了hashcode方法，通过一定的算法，使他们在equals相等时，也会有相同的hashcode值。
+​		比如：有个A类重写了equals方法，但是没有重写hashCode方法，看输出结果，对象a1和对象a2使用equals方法相等，按照上面的hashcode的用法，那么他们两个的hashcode肯定相等，但是这里由于没重写hashcode方法，他们两个hashcode并不一样，所以，我们在重写了equals方法后，尽量也重写了hashcode方法，通过一定的算法，使他们在equals相等时，也会有相同的hashcode值。
 
-　　　　　　　　　　　　　　![img](https://images2015.cnblogs.com/blog/874710/201611/874710-20161116212819810-31016841.png)
+　　　　　　　　　　　　　　![img](https://gitee.com/aaronlynn/picture/raw/master/img/874710-20161116212819810-31016841.png)
 
  
 
-实例：现在来看一下String的源码中的equals方法和hashcode方法。这个类就重写了这两个方法，现在为什么需要重写这两个方法了吧？
+​		实例：现在来看一下String的源码中的equals方法和hashcode方法。这个类就重写了这两个方法，现在为什么需要重写这两个方法了吧？
 
-equals方法：其实跟我上面写的那个例子是一样的原理，所以通过源码又知道了String的equals方法验证的是两个字符串的值是否一样。还有Double类也重写了这些方法。很多类有比较这类的，都重写了这两个方法，因为在所有类的父类Object中。equals的功能就是 “==”号的功能。你们还可以比较String对象的equals和==的区别啦。这里不再说明。
+​		equals方法：其实跟我上面写的那个例子是一样的原理，所以通过源码又知道了String的equals方法验证的是两个字符串的值是否一样。还有Double类也重写了这些方法。很多类有比较这类的，都重写了这两个方法，因为在所有类的父类Object中。equals的功能就是 “==”号的功能。你们还可以比较String对象的equals和==的区别啦。这里不再说明。
 
 ![img](https://gitee.com/aaronlynn/picture/raw/master/img/874710-20161116213248701-1976448309.png)
 
  
 
-　　　　　　　　hashcode方法
-
-　　　　　　　　![img](https://gitee.com/aaronlynn/picture/raw/master/img/874710-20161116213322170-1989555882.png)
+​			hashcode方法![img](https://gitee.com/aaronlynn/picture/raw/master/img/874710-20161116213322170-1989555882.png)
 
  
