@@ -5,6 +5,8 @@ lastmod: 2021-01-23T14:21:26+08:00
 author: Aaron
 avatar: /me/yy.jpg
 cover: /img/java.jpg
+images:
+  - /img/2017.jpg
 categories:
   - Java
 tags:
@@ -72,7 +74,7 @@ weight: 1
 
 ​		equals方法：其实跟我上面写的那个例子是一样的原理，所以通过源码又知道了String的equals方法验证的是两个字符串的值是否一样。还有Double类也重写了这些方法。很多类有比较这类的，都重写了这两个方法，因为在所有类的父类Object中。equals的功能就是 “==”号的功能。你们还可以比较String对象的equals和==的区别啦。这里不再说明。
 
-![img](https://gitee.com/aaronlynn/picture/raw/master/img/874710-20161116213248701-1976448309.png)
+![img](https://gitee.com/aaronlynn/picture/raw/master/img/874710-20161116213248701-1976448309.png) 
 
  
 
