@@ -4,9 +4,7 @@ date: 2021-01-23T14:21:26+08:00
 lastmod: 2021-01-23T14:21:26+08:00
 author: Aaron
 avatar: /me/yy.jpg
-cover: /img/java.jpg
-images:
-  - /img/2017.jpg
+cover: /img/java.png
 categories:
   - Java
 tags:
