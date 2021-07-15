@@ -348,8 +348,13 @@ String address = "中山北路南京大学仙林校区";
 
 英文：double colon，双冒号（::）运算符在Java 8中被用作**方法引用（method reference）**，方法引用是与lambda表达式相关的一个重要特性。它提供了一种不执行方法的方法。为此，方法引用需要由兼容的函数接口组成的目标类型上下文。
 
+~~~ xml
 1、静态方法引用（static method）语法：classname::methodname 例如：Person::getAge
 2、对象的实例方法引用语法：instancename::methodname 例如：System.out::println
 3、对象的超类方法引用语法： super::methodname
 4、类构造器引用语法： classname::new 例如：ArrayList::new
 5、数组构造器引用语法： typename[]::new 例如： String[]:new
+~~~
+
+
+
