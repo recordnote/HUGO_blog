@@ -95,8 +95,8 @@ public class Boss {
 
 spring2.5提供了基于注解（Annotation-based）的配置，我们可以通过注解的方式来完成注入依赖。在Java代码中可以使用 @Resource或者@Autowired注解方式来进行注入。虽然@Resource和@Autowired都可以来完成注入依赖，但它们之间是有**区别**：
 
-<font color='red'>a. @Resource默认是按照名称来装配注入的，只有当找不到与名称匹配的bean才会按照类型来装配注入</font>
-<font color='red'>b. @Autowired默认是按照类型装配注入的，如果想按照名称来转配注入，则需要结合@Qualifier一起使用</font>
+<font color='red'>a. @Autowired默认是按照类型装配注入的，如果想按照名称来转配注入，则需要结合@Qualifier一起使用</font>
+<font color='red'>b.@Resource默认是按照名称来装配注入的，只有当找不到与名称匹配的bean才会按照类型来装配注入 </font>
 <font color='red'>c. @Resource注解是由JDK（1.6以上版本）提供，而@Autowired是由Spring提供@Resource的方式</font>
 <font color='red'>d. @Resource和@Autowired都可以书写标注在字段或者该字段的setter方法之上</font>
 
