@@ -3,10 +3,10 @@ title: JVM 虚拟机
 date: 2021-04-01T14:21:26+08:00
 lastmod: 2021-04-01T14:21:26+08:00
 author: Aaron
-avatar: /me/yy.jpg
-cover: /img/Java.png
-images:
-  - /img/Java.png
+avatar: /me/yy.jpgj
+cover: /img/java.png
+images:j
+  - /img/java.png
 categories:
   - Java
 tags:
@@ -36,7 +36,7 @@ weight: 1
 
 这些版本的 JVM 内存模型主要有以下差异：
 
-- JDK 1.6：有永久代，静态变量存放在永久代上
+- JDK 1.6：有永久代，<font color='red'>**静态变量**</font>存放在永久代上
 - JDK 1.7：有永久代，但已经把字符串常量池、静态变量，存放在堆上。逐渐的减少永久代的使用
 
 - JDK 1.8：无永久代，运行时常量池、类常量池，都保存在元数据区，也就是常说的**<font color = "red">元空间</font>**。但字符串常量池仍然存放在堆上。
@@ -222,6 +222,3 @@ ps：<font color='red'>**在主流的 Java 虚拟机中并没有选用引用计�
 ##### 6.3.3  G1
 
 <img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210718140802932.png" alt="image-20210718140802932" style="zoom: 80%;" /> 
-
-
-
