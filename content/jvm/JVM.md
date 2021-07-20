@@ -6,7 +6,7 @@ author: Aaron
 avatar: /me/yy.jpgj
 cover: /img/java.png
 images:j
-  - /img/java.png
+  - /img/java.png 
 categories:
   - Java
 tags:
