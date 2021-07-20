@@ -3,9 +3,9 @@ title: JVM 虚拟机
 date: 2021-04-01T14:21:26+08:00
 lastmod: 2021-04-01T14:21:26+08:00
 author: Aaron
-avatar: /me/yy.jpgj
+avatar: /me/yy.jpg
 cover: /img/java.png
-images:j
+images:
   - /img/java.png 
 categories:
   - Java
