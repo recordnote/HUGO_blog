@@ -592,7 +592,7 @@ public class Solution {
 }
 ~~~
 
-## 8、**JZ8** **跳台阶**
+## 8、**JZ8** **青蛙跳台阶**
 
 描述
 
@@ -634,6 +634,34 @@ public class Solution {
 
 [斐波那契数列（四种解法）](https://blog.csdn.net/weixin_42292229/article/details/104505402)
 
+~~~
+一阶：口
+1
+有1种跳法
+
+二阶：口口
+1  1
+2
+有2种跳法
+
+三阶：口口口
+ 1 1 1
+ 1 2
+ 2 1
+有3种跳法
+
+四阶口口口口
+1 1 1 1
+1 1 2
+1 2 1
+2 1
+2 2
+有5种跳法
+
+跳法规律  ： 1 2 3 5 .......
+f(n) = f(n-1) + f(n-2)
+~~~
+
 **方法一：**
 面试别写型递推版实现，时间复杂度 *O*(2^n)
 
@@ -648,50 +676,249 @@ public class Solution {
 ```
 
 **方法二：**
-面试推荐型，自底向上型循环求解，时间复杂度为 O(n)。
+自底向上型循环求解，时间复杂度为 O(n)。
 
 ```java
 public class Solution {
-    public int JumpFloor(int target) {
-        // f[1] = 1, f[0] = 1 (f[0]是为了简便作答自己添加的)
-        int a = 1, b = 1;
-        for (int i = 2; i <= target; i++) {
-            // 求f[i] = f[i - 1] + f[i - 2]
-            a = a + b; // 这里求得的 f[i] 可以用于下次循环求 f[i+1]
-            // f[i - 1] = f[i] - f[i - 2]
-            b = a - b; // 这里求得的 f[i-1] 可以用于下次循环求 f[i+1]
+    public int jumpFloor(int target) {
+        if(target == 0 || target == 1 || target == 2){
+            return target;
         }
-        return a;
-    }
-}
-```
-
-有小伙伴表示，方法二不太容易理解，这里做一下简单解释。其实就是自底向上求递推式的过程，这里再给出方法二原始的版本。
-
-```java
-public class Solution {
-    public int JumpFloor(int target) {
-        if (target <= 1) {
-            return 1;
-        }
-        // a 表示第 f[i-2] 项，b 表示第 f[i-1] 项
-        int a = 1, b = 1, c = 0;
-        for (int i = 2; i <= target; i++) {
-            c = a + b; // f[i] = f[i - 1] + f[i - 2];
-            // 为下一次循环求 f[i + 1] 做准备
-            a = b; // f[i - 2] = f[i - 1]
-            b = c; // f[i - 1] = f[i]
+        int a = 1, b = 2, c = 0;
+        for (int i = 3; i <= target; i++) {
+            c = a + b;
+            a = b;
+            b = c;
         }
         return c;
     }
 }
 ```
 
-其实，方法二就是将这里的`if`条件判断和变量`c`优化掉了而已。
+## 9、**JZ9** **青蛙跳台阶扩展问题（变态版）**
+
+描述
+
+一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶(n为正整数)总共有多少种跳法。
+
+示例1
+
+输入：
+
+```
+3
+```
+
+返回值：
+
+```
+4
+```
+
+分析：
+
+```xml
+4阶 口口口口
+1 1 1 1
+1 1 2
+1 2 1
+1 3
+2 1 1
+2 2
+3 1
+4
+总共8种跳法
+
+3阶 口口口
+1 1 1
+1 2
+2 1
+3
+总共4种跳法
+
+2阶 口口口
+1 1
+2
+总共2种跳法
+
+1阶 口
+1
+总共1种
+
+跳法： 1 2 4 8 ... 2^(n-1)
+
+```
+
+**【分析】**
+每个台阶可以看作一块木板，让青蛙跳上去，n个台阶就有n块木板，最后一块木板是青蛙到达的位子，
+必须存在，其他 (n-1) 块木板可以任意选择是否存在，则每个木板有存在和不存在两种选择，(n-1) 块木板
+就有 [2^(n-1)] 种跳法，可以直接得到结果。
 
 
 
+其实我们所要求的序列为：0,1,2,4,8,16,……
 
+**<font color='red'>所以除了第一位外，其他位的数都是前一位的数去乘以2所得到的积。</font>**
+
+
+
+题解：
+
+~~~ java
+/**
+*第一种写法
+*/
+public class Solution {
+    public int jumpFloorII(int target) {
+        if(target == 0){
+            return 0;
+        }
+        int sum = 1;
+        for (int i = 1; i <= target - 1; i++) {
+            sum *= 2;
+        }
+        return sum;
+        
+    }
+}
+
+/**
+*第二种写法 递归
+*/
+public class Solution {
+    public int jumpFloorII(int target) {
+        if(target == 0){
+            return 0;
+        }else if(target == 1){
+            return 1;
+        }else{
+            return 2*jumpFloorII(target - 1);
+        }   
+    }
+}
+
+~~~
+
+## 10、**JZ10** **矩形覆盖**
+
+描述
+
+我们可以用2x1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2X1的小矩形无重叠地覆盖一个2xn的大矩形，从同一个方向看总共有多少种不同的方法？
+
+比如n=3时，2*3的矩形块有3种不同的覆盖方法(从同一个方向看)：
+
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210721141607160.png" alt="image-20210721141607160" style="zoom: 50%;" /> 
+
+输入描述：
+
+2*1的小矩形的总个数n
+
+返回值描述：
+
+覆盖一个2*n的大矩形总共有多少种不同的方法(从同一个方向看)
+
+示例1
+
+输入：
+
+```
+0
+```
+
+返回值：
+
+```
+0
+```
+
+示例2
+
+输入：
+
+```
+1
+```
+
+返回值：
+
+```
+1
+```
+
+示例3
+
+输入：
+
+```
+4
+```
+
+返回值：
+
+```
+5
+```
+
+### 分析：
+
+递推
+
+对于这种题没有思路怎么办？
+
+那就对n 从小到大，一步步分析：
+
+![image-20210721160942885](https://gitee.com/aaronlynn/picture/raw/master/img/image-20210721160942885.png) 
+
+n=1时，显然只有一种方法
+
+![image-20210721161015941](https://gitee.com/aaronlynn/picture/raw/master/img/image-20210721161015941.png) 
+
+n=2时，如图有2种方法
+
+![image-20210721161028733](https://gitee.com/aaronlynn/picture/raw/master/img/image-20210721161028733.png) 
+
+n=3，如图有3中方法
+
+ <img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210721161053281.png" style="zoom: 80%;" />
+
+n=4,如图有5种方法。
+
+如果到这里，还没有发现规律怎么办呢？
+
+那我们就再分析以下，从n=3到n=4，怎么来的呢？
+
+这里有2种情况：
+
+- 直接在n=3的情况下，再后面中添加一个竖着的。这个很显然成立，有3种情况
+- 然后横着的显然能添加到n-2的情况上，也就是在n=2后面，添加2个横着的。有2种情况
+
+通过以上分析，发现刚好和图中的个数一样。
+
+所以总结：f [n]表示2*n大矩阵 的方法数。
+
+可以得出：f[n] = f[n-1] + f[n-2]，初始条件f[1] = 1, f[2] =2
+
+所以代码可用递归，记忆递归，和动态规划和递推
+
+
+### 题解：
+
+```java
+public class Solution {
+    public int rectCover(int target) {
+        if(target <= 2){
+            return target;
+        }
+        int a = 1, b = 2, c = 0;
+        for(int i = 3;i<= target;i++){
+            c = a + b;
+            a = b;
+            b = c;
+        }
+        return b;
+    }
+}
+```
 
 
 
