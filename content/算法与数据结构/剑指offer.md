@@ -137,7 +137,7 @@ public class Solution {
 
 如输入{1,2,3}的链表如下图:
 
-![img](https://gitee.com/aaronlynn/picture/raw/master/img/103D87B58E565E87DEFA9DD0B822C55F)
+![image-20210721102102786](https://gitee.com/aaronlynn/picture/raw/master/img/image-20210721102102786.png) 
 
 返回一个数组为[3,2,1]
 
@@ -232,7 +232,7 @@ public class Solution {
 
 例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建出如下图所示。
 
-![img](https://gitee.com/aaronlynn/picture/raw/master/img/776B0E5E0FAD11A6F15004B29DA5E628)
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210721102138599.png" alt="image-20210721102138599" style="zoom:67%;" />
 
 提示:
 
