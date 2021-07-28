@@ -4,15 +4,17 @@ date: 2021-04-01T14:21:26+08:00
 lastmod: 2021-05-22T14:21:26+08:00
 author: Aaron
 avatar: /me/yy.jpg
-cover: /img/java.png
+cover: https://gitee.com/aaronlynn/picture/raw/master/img/image-20210728174624549.png
 images:
-  - /img/java.png
+  - https://gitee.com/aaronlynn/picture/raw/master/img/image-20210728174624549.png
 categories:
   - 算法与数据结构
 tags:
   - 算法与数据结构
 weight: 1
 ---
+
+
 
 ## 1、JZ1  二维数组中的查找
 
@@ -919,6 +921,1073 @@ public class Solution {
     }
 }
 ```
+
+## 11、 **JZ11** **二进制中1的个数**
+
+描述
+
+输入一个整数，输出该数32位二进制表示中1的个数。其中负数用补码表示。
+
+示例1
+
+输入：
+
+```
+10
+```
+
+返回值：
+
+```
+2
+```
+
+分析：
+
+如果一个整数不为0，那么这个整数至少有一位是1。如果我们把这个整数减1，那么原来处在整数最右边的1就会变为0，原来在1后面的所有的0都会变成1(如果最右边的1后面还有0的话)。其余所有位将不会受到影响。
+举个例子：一个二进制数1100，从右边数起第三位是处于最右边的一个1。减去1后，第三位变成0，它后面的两位0变成了1，而前面的1保持不变，因此得到的结果是1011.我们发现减1的结果是把最右边的一个1开始的所有位都取反了。这个时候如果我们再把原来的整数和减去1之后的结果做与运算，从原来整数最右边一个1那一位开始所有位都会变成0。如1100&1011=1000.也就是说，把一个整数减去1，再和原整数做与运算，会把该整数最右边一个1变成0.那么一个整数的二进制有多少个1，就可以进行多少次这样的操作
+
+**<font color='red'>补充知识：</font>**
+
+1）与运算符（&）
+
+运算规则：
+
+0&0=0；0&1=0；1&0=0；1&1=1
+
+即：<font color='red'>**两个同时为1，结果为1**</font>，否则为0
+
+例如：3&5
+
+十进制3转为二进制的3：0000 0011
+
+十进制5转为二进制的5：0000 0101
+
+------------------------结果：0000 0001 ->转为十进制：1
+
+即：3&5 = 1
+
+2）或运算（|）
+
+运算规则：
+
+0|0=0； 0|1=1； 1|0=1；  1|1=1；
+
+即 ：参加运算的两个对象，<font color='red'>**一个为1，其值为1**</font>
+
+例如：3|5　即 00000011 | 0000 0101 = 00000111，因此，3|5=7。　
+
+3）异或运算符（^）
+
+运算规则：0^0=0； 0^1=1； 1^0=1；  1^1=0；
+
+即：参加运算的两个对象，如果两个位为<font color='red'>**“异”（值不同），则该位结果为1**</font>，否则为0。
+
+例如：3^5 = 0000 0011 | 0000 0101 =0000 0110，因此，3^5 = 6
+
+[**负数补码表示**](https://blog.csdn.net/baidu_35679960/article/details/80364315)
+
+题解：
+
+```java
+public class Solution {
+    public int NumberOf1(int n) {
+        
+        int count=0;
+        while(n!=0){
+            count++;
+            n=n&(n-1);
+        }
+        return count;
+    }
+}
+```
+
+## 12、**JZ12** **数值的整数次方**
+
+描述
+
+给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。
+
+保证base和exponent不同时为0。不得使用库函数，同时不需要考虑大数问题，也不用考虑小数点后面0的位数。
+
+示例1
+
+输入：
+
+```
+2.00000,3
+```
+
+返回值：
+
+```
+8.00000
+```
+
+示例2
+
+输入：
+
+```
+2.10000,3
+```
+
+返回值：
+
+```
+9.26100
+```
+
+示例3
+
+输入：
+
+```
+2.00000,-2
+```
+
+返回值：
+
+```
+0.25000
+```
+
+说明：
+
+```
+2的-2次方等于1/4=0.25
+```
+
+### 分析：
+
+第一种 暴力法
+
+第二种 递归法（快速幂）
+
+ <img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210723105148744.png" alt="image-20210723105148744" style="zoom:80%;" />
+
+第三种 非递归的快速幂
+
+![image-20210723111649577](https://gitee.com/aaronlynn/picture/raw/master/img/image-20210723111649577.png)
+
+### 题解：
+
+~~~ java
+//第一种 暴力法 
+//时间复杂度：O(n)
+//空间复杂度：O(1)
+public class Solution {
+    public double Power(double base, int exponent) {
+        if(exponent == 0){
+            return 1;
+        }
+        if(exponent == 1){
+            return base;
+        }
+        int e = exponent > 0 ? exponent : -exponent;
+        Double result = 1.0d;
+        for (int i = 1; i<=e; i++){
+            result *= base;
+        }
+        return exponent > 0 ? result : 1/result;
+  }
+}
+
+/** 
+*第二种 递归法（快速幂）
+*时间复杂度：O(logn)，每次规模减少一半
+*空间复杂度：O(logn)，递归栈，因为要记住logn个变量
+*/
+public class Solution {
+    public double Power(double base, int exponent) {
+        if(exponent<0){
+            exponent = -exponent;
+            base = 1/base;
+        }
+        if(exponent == 0){
+            return 1.0;
+        }
+
+        double ret = Power(base, exponent/2);
+        if((exponent&1) == 1){
+            //指数为奇数
+            return ret*ret*base;
+        }else{
+            return ret*ret;
+        }
+  }
+}
+
+/**
+*第三种 非递归的快速幂
+*时间复杂度：O(logn)，因为n的二进制位个数为logn
+*空间复杂度：O(1)
+*/
+public class Solution {
+    public double Power(double base, int exponent) {
+        if (exponent < 0) {
+            base = 1 / base;
+            exponent = -exponent;
+        }
+        double x = base; // 记录x^0, x^1, x^2 ...
+        double ret = 1.0;
+        while (exponent > 0) {
+            if ((exponent&1) == 1) {
+                ret *= x; // 二进制位数是1的，乘进答案。
+            }
+            x *= x;
+            //指数位数右移一位
+            exponent >>= 1;
+        }
+        return ret;
+  }
+}
+
+
+~~~
+
+## 13、 **JZ13** **调整数组顺序使奇数位于偶数前面**
+
+描述
+
+输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有的奇数位于数组的前半部分，所有的偶数位于数组的后半部分，并保证奇数和奇数，偶数和偶数之间的相对位置不变。
+
+示例1
+
+输入：
+
+```
+[1,2,3,4]
+```
+
+返回值：
+
+```
+[1,3,2,4]
+```
+
+示例2
+
+输入：
+
+```
+[2,4,6,5,7]
+```
+
+返回值：
+
+```
+[5,7,2,4,6]
+```
+
+题解：
+~~~ java
+import java.util.*;
+/**
+*时间复杂度O(n)
+*空间复杂度O(n)
+*/
+public class Solution {
+    public int[] reOrderArray (int[] array) {
+        Queue<Integer> oddQueue = new LinkedList<>();
+        Queue<Integer> evenQueue = new LinkedList<>();
+        for (int i = 0; i < array.length; i++) {
+            if((array[i]&1) == 1){
+                //为奇数
+                oddQueue.add(array[i]);
+            }else{
+                evenQueue.add(array[i]);
+            }
+        }
+
+        for (int i = 0; i < array.length; i++) {
+            if(!oddQueue.isEmpty()){
+                array[i] = oddQueue.poll();
+            }else {
+                array[i] = evenQueue.poll();
+            }
+        }
+        return array;
+    }
+}
+~~~
+
+## 14、**JZ14** **链表中倒数最后k个结点**
+
+描述
+
+输入一个链表，输出一个链表，该输出链表包含原链表中从倒数第k个结点至尾节点的全部节点。
+
+如果该链表长度小于k，请返回一个长度为 0 的链表。
+
+示例1
+
+输入：
+
+```
+{1,2,3,4,5},1 
+```
+
+返回值：
+
+```
+{5}
+```
+
+分析：
+
+在链表中：倒数的+顺数的长度等于链表总长度，所以可以设置两个指针，一个先走K步，剩下的到链表的末尾要走的步数就是倒数第k个节点，需要从头开始走的步数
+
+~~~ java
+import java.util.*;
+
+/*
+ * public class ListNode {
+ *   int val;
+ *   ListNode next = null;
+ *   public ListNode(int val) {
+ *     this.val = val;
+ *   }
+ * }
+ */
+
+public class Solution {
+    /**
+     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+     *
+     * 
+     * @param pHead ListNode类 
+     * @param k int整型 
+     * @return ListNode类
+     */
+    public ListNode FindKthToTail (ListNode pHead, int k) {
+        if(pHead == null){
+            return null;
+        }
+        ListNode first = pHead;
+        ListNode second = pHead;
+
+        for (int i = 0; i < k; i++) {
+            if(first == null){
+                //判断k可能大于链表节点数，
+                return null;
+            }
+            //第一个指针走k个位置
+            first = first.next;
+        }
+        while (first != null){
+            //第一个指针走完最后一步，第二个指针的位置就是倒数k
+            first = first.next;
+            second = second.next;
+        }
+        return second;
+    }
+}
+~~~
+
+## 15、**JZ15** **反转链表**
+
+描述
+
+输入一个链表，反转链表后，输出新链表的表头。
+
+示例1
+
+输入：
+
+```
+{1,2,3}
+```
+
+返回值：
+
+```
+{3,2,1}
+```
+
+分析：
+
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210727153028017.png" alt="image-20210727153028017" style="zoom:80%;" /> 
+
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210727152952167.png" alt="image-20210727152952167" style="zoom:80%;" /> 
+
+题解：
+
+~~~ java
+/*
+public class ListNode {
+    int val;
+    ListNode next = null;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}*/
+import java.util.*;
+public class Solution {
+    public ListNode ReverseList(ListNode head) {
+       if(head == null){
+            return null;
+        }
+        ListNode pre = null;
+        ListNode cur = head;
+        while (cur != null){
+            //反转 ==》指针反转
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;	
+            cur = next;
+        }
+        return pre;
+    }
+}
+~~~
+
+## 16、**JZ16** **合并两个排序的链表**
+
+描述
+
+输入两个单调递增的链表，输出两个链表合成后的链表，当然我们需要合成后的链表满足单调不减规则。
+
+示例1
+
+输入：
+
+```
+{1,3,5},{2,4,6}
+```
+
+返回值：
+
+```
+{1,2,3,4,5,6}
+```
+
+题解：
+
+```java
+/**
+*第一种
+*
+*
+*
+*
+*
+*/
+public class Solution {
+    public ListNode Merge(ListNode list1,ListNode list2) {
+		if(list1 == null && list2 == null){
+            return null;
+        }
+        if(list1 == null){
+            return list2;
+        }
+        if(list2 == null){
+            return list1;
+        }
+        ListNode head = new ListNode(0); //用来做合并的链表
+        ListNode root = head; //保存头节点引用
+        
+        while(list1 != null && list2 != null){
+            if(list1.val < list2.val){
+                head.next = list1;
+                list1 = list1.next;
+            }else {
+                head.next = list2;
+                list2 = list2.next;
+            }
+            head = head.next;
+        }
+        //考虑可能会有一个链表走完的情况，将未走完链表接在合并链表后面
+        if(list1 == null){
+            head.next = list2;
+        }
+        if(list2 == null){
+            head.next = list1;
+        }
+        return  root.next;
+    }
+}
+
+/**
+*第二种
+*递归版本，可以练习递归代码。
+*写递归代码，最重要的要明白递归函数的功能。可以不必关心递归函数的具体实现。
+*比如这个ListNode* Merge(ListNode* pHead1, ListNode* pHead2)
+*函数功能：合并两个单链表，返回两个单链表头结点值小的那个节点。
+*时间复杂度：O(m+n)
+*空间复杂度：O(m+n),每一次递归，递归栈都会保存一个变量，最差情况会保存(m+n)个变量
+*/
+public class Solution {
+    public ListNode Merge(ListNode list1,ListNode list2) {
+        if(list1 == null){
+            return list2;
+        }
+        if(list2 == null){
+            return list1;
+        }
+       if(list1.val < list2.val){
+            list1.next = Merge(list1.next, list2);
+            return list1;
+       }else {
+           list2.next = Merge(list1, list2.next);
+           return list2;
+       }
+    }
+}
+
+```
+
+## 17、**JZ17** **树的子结构**
+
+描述
+
+输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）
+
+示例1
+
+输入：
+
+```
+{8,8,#,9,#,2,#,5},{8,9,#,2}
+```
+
+返回值：
+
+```
+true
+```
+
+题解：
+
+~~~ java
+/**
+public class TreeNode {
+    int val = 0;
+    TreeNode left = null;
+    TreeNode right = null;
+
+    public TreeNode(int val) {
+        this.val = val;
+
+    }
+
+}
+*/
+public class Solution {
+    public boolean HasSubtree(TreeNode root1,TreeNode root2) {
+      boolean result = false;
+        //当Tree1和Tree2都不为零的时候，才进行比较。否则直接返回false
+        if (root2 != null && root1 != null) {
+            //如果找到了对应Tree2的根节点的点
+            if(root1.val == root2.val){
+                //以这个根节点为为起点判断是否包含Tree2
+                result = doesTree1HaveTree2(root1,root2);
+            }
+            //如果找不到，那么就再去root的左儿子当作起点，去判断时候包含Tree2
+            if (!result) {
+                result = HasSubtree(root1.left,root2);
+            }
+             
+            //如果还找不到，那么就再去root的右儿子当作起点，去判断时候包含Tree2
+            if (!result) {
+                result = HasSubtree(root1.right,root2);
+               }
+            }
+            //返回结果
+        return result;
+    }
+    public static boolean doesTree1HaveTree2(TreeNode node1, TreeNode node2) {
+        //如果Tree2已经遍历完了都能对应的上，返回true
+        if (node2 == null) {
+            return true;
+        }
+        //如果Tree2还没有遍历完，Tree1却遍历完了。返回false
+        if (node1 == null) {
+            return false;
+        }
+        //如果其中有一个点没有对应上，返回false
+        if (node1.val != node2.val) {  
+            return false;
+        }
+         
+        //如果根节点对应的上，那么就分别去子节点里面匹配
+        return doesTree1HaveTree2(node1.left,node2.left) && doesTree1HaveTree2(node1.right,node2.right);
+    }
+}
+~~~
+
+## 18、**JZ18** **二叉树的镜像**
+
+描述
+
+操作给定的二叉树，将其变换为源二叉树的镜像。
+
+```
+比如：    源二叉树 
+            8
+           /  \
+          6   10
+         / \  / \
+        5  7 9 11
+        镜像二叉树
+            8
+           /  \
+          10   6
+         / \  / \
+        11 9 7  5
+```
+
+示例1
+
+输入：
+
+```
+{8,6,10,5,7,9,11}
+```
+
+返回值：
+
+```
+{8,10,6,11,9,7,5}
+```
+
+分析：
+
+题解：
+
+~~~ java
+import java.util.*;
+
+/*
+ * public class TreeNode {
+ *   int val = 0;
+ *   TreeNode left = null;
+ *   TreeNode right = null;
+ *   public TreeNode(int val) {
+ *     this.val = val;
+ *   }
+ * }
+ */
+
+public class Solution {
+    /**
+     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+     *
+     * 
+     * @param pRoot TreeNode类 
+     * @return TreeNode类
+     */
+    public TreeNode Mirror (TreeNode pRoot) {
+        if (pRoot == null){
+            return null;
+        }
+        TreeNode left = Mirror(pRoot.left);
+        TreeNode right = Mirror(pRoot.right);
+        pRoot.left = right;
+        pRoot.right = left;
+        return pRoot;
+    }
+
+}
+~~~
+
+## 19、 **JZ19** **顺时针打印矩阵**
+
+描述
+
+输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字，例如，如果输入如下4 X 4矩阵：
+
+```
+[[1,2,3,4],
+[5,6,7,8],
+[9,10,11,12],
+[13,14,15,16]]
+```
+
+则依次打印出数字
+
+```
+[1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10]
+```
+
+示例1
+
+输入：
+
+```
+[[1,2],[3,4]]
+```
+
+返回值：
+
+```
+[1,2,4,3]
+```
+
+分析：
+
+简单来说，就是不断地收缩矩阵的边界
+定义四个变量代表范围，up、down、left、right
+
+1. 向右走存入整行的值，当存入后，该行再也不会被遍历，代表上边界的 up 加一，同时判断是否和代表下边界的 down 交错
+2. 向下走存入整列的值，当存入后，该列再也不会被遍历，代表右边界的 right 减一，同时判断是否和代表左边界的 left 交错
+3. 向左走存入整行的值，当存入后，该行再也不会被遍历，代表下边界的 down 减一，同时判断是否和代表上边界的 up 交错
+4. 向上走存入整列的值，当存入后，该列再也不会被遍历，代表左边界的 left 加一，同时判断是否和代表右边界的 right 交错
+
+题解：
+
+~~~ java
+import java.util.ArrayList;
+public class Solution {
+    public ArrayList<Integer> printMatrix(int [][] matrix) {
+       ArrayList<Integer> list = new ArrayList<>();
+        if(matrix == null || matrix.length == 0 || matrix[0].length == 0){
+            return list;
+        }
+        int up = 0; //第一行
+        int down = matrix.length - 1; //最后一行
+        int left = 0; //最左边
+        int right = matrix[0].length - 1; //最右边
+
+        while(true){
+            for (int col = left; col <= right; col++) {
+                list.add(matrix[up][col]);
+            }
+            up++;
+            if(up > down){
+                break;
+            }
+            for (int row = up; row <= down; row++) {
+                list.add(matrix[row][right]);
+            }
+            right--;
+            if(right < left){
+                break;
+            }
+            for (int col = right; left <= col ; col--) {
+                list.add(matrix[down][col]);
+            }
+            down--;
+            if(down < up){
+                break;
+            }
+            for (int row = down; row >= up ; row--) {
+                list.add(matrix[row][left]);
+            }
+            left++;
+            if(left > right){
+                break;
+            }
+        }
+        return list;
+    }
+}
+~~~
+
+## 20、**JZ20** **包含min函数的栈**
+
+描述
+
+定义栈的数据结构，请在该类型中实现一个能够得到栈中所含最小元素的min函数，并且调用 min函数、push函数 及 pop函数 的时间复杂度都是 O(1)
+
+push(value):将value压入栈中
+
+pop():弹出栈顶元素
+
+top():获取栈顶元素
+
+min():获取栈中最小元素
+
+示例:
+
+输入:  ["PSH-1","PSH2","MIN","TOP","POP","PSH1","TOP","MIN"]
+
+输出:  -1,2,1,-1
+
+解析:
+
+"PSH-1"表示将-1压入栈中，栈中元素为-1
+
+"PSH2"表示将2压入栈中，栈中元素为2，-1
+
+“MIN”表示获取此时栈中最小元素==>返回-1
+
+"TOP"表示获取栈顶元素==>返回2
+
+"POP"表示弹出栈顶元素，弹出2，栈中元素为-1
+
+"PSH-1"表示将1压入栈中，栈中元素为1，-1
+
+"TOP"表示获取栈顶元素==>返回1
+
+“MIN”表示获取此时栈中最小元素==>返回-1
+
+示例1
+
+输入：
+
+```
+ ["PSH-1","PSH2","MIN","TOP","POP","PSH1","TOP","MIN"]
+```
+
+返回值：
+
+```
+-1,2,1,-1
+```
+
+分析：借助辅助栈
+
+首先需要一个正常栈normal,用于栈的正常操作，然后需要一个辅助栈minval，专门用于获取最小值
+
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/284295_1587290406796_0EDB8C9599BA026855B6DCCC1D5EDAE5" alt=" " style="zoom:67%;" /> 
+
+时间复杂度：O(1)
+空间复杂度：O(n), 开辟了一个辅助栈。
+
+题解：
+
+~~~ java
+import java.util.Stack;
+
+public class Solution {
+
+    Stack<Integer> stack1 = new Stack<>(); 
+    Stack<Integer> stack2 = new Stack<>(); 
+    public void push(int node) {
+        stack1.push(node);
+        if(stack2.empty()){
+            stack2.push(node);
+        }else{
+            stack2.push(Math.min(node,stack2.peek()));
+        }
+    }
+    
+    public void pop() {
+        stack1.pop();
+        stack2.pop();
+    }
+    
+    public int top() {
+        return stack1.peek();
+    }
+    
+    public int min() {
+        return stack2.peek();
+    }
+}
+~~~
+
+## 21、**JZ21** **栈的压入、弹出序列**
+
+描述
+
+输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否可能为该栈的弹出顺序。假设压入栈的所有数字均不相等。例如序列1,2,3,4,5是某栈的压入顺序，序列4,5,3,2,1是该压栈序列对应的一个弹出序列，但4,3,5,1,2就不可能是该压栈序列的弹出序列。（注意：这两个序列的长度是相等的）
+
+示例1
+
+输入：
+
+```
+[1,2,3,4,5],[4,3,5,1,2]
+```
+
+返回值：
+
+```
+false
+```
+
+分析：新建一个栈，将数组A压入栈中，当栈顶元素等于数组B时，就将其出栈，当循环结束时，判断栈是否为空，若为空则返回true.
+
+题解：
+
+~~~ java
+/**
+时间复杂度：O(n)
+空间复杂度：O(n), 用了一个辅助栈，最坏情况下会全部入栈
+*/
+
+public class Solution {
+    public boolean IsPopOrder(int [] pushA,int [] popA) {
+        if(pushA.length == 0 || popA.length == 0){
+            return false;
+        }
+        int j = 0;
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i < pushA.length; i++){
+            stack.push(pushA[i]);
+            while (!stack.isEmpty() && stack.peek() == popA[j] ){
+                stack.pop();
+                j++;
+            }
+        }
+        return stack.isEmpty();
+    }
+}
+~~~
+
+## 22、**JZ22** **从上往下打印二叉树**
+
+描述
+
+从上往下打印出二叉树的每个节点，同层节点从左至右打印。
+
+示例1
+
+输入：
+
+```
+{5,4,#,3,#,2,#,1}
+```
+
+返回值：
+
+```
+[5,4,3,2,1]
+```
+
+分析：
+
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210728161409544.png" alt="image-20210728161409544" style="zoom: 80%;" /> 
+
+题解：
+
+~~~ java
+import java.util.*;
+/**
+*思路是用arraylist模拟一个队列来存储相应的TreeNode
+*/
+public class Solution {
+    public ArrayList<Integer> PrintFromTopToBottom(TreeNode root) {
+        if(root == null){
+            return new ArrayList<>();
+        }
+        Deque<TreeNode> deque = new LinkedList<>(); //将节点放入队列
+        ArrayList<Integer> list = new ArrayList<>();
+        deque.addLast(root);
+        while(!deque.isEmpty()){
+            TreeNode node = deque.pollFirst();
+            list.add(node.val);
+
+            if(node.left != null){
+                deque.addLast(node.left);
+            }
+            if(node.right != null){
+                deque.addLast(node.right);
+            }
+        }
+        return list;
+    }
+}
+~~~
+
+## 23、**JZ23** **二叉搜索树的后序遍历序列**
+
+描述
+
+输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果。如果是则返回true,否则返回false。假设输入的数组的任意两个数字都互不相同。（ps：我们约定空树不是二叉搜索树）
+
+示例1
+
+输入：
+
+```
+[4,8,6,12,16,14,10]
+```
+
+返回值：
+
+```
+true
+```
+
+分析：
+
+题解：
+
+~~~ java
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+~~~
+
+
+
+## 24、**JZ24** **二叉树中和为某一值的路径**
+
+描述
+
+输入一颗二叉树的根节点和一个整数，按字典序打印出二叉树中结点值的和为输入整数的所有路径。路径定义为从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。
+
+示例1
+
+输入：
+
+```
+{10,5,12,4,7},22
+```
+
+返回值：
+
+```
+[[10,5,7],[10,12]]
+```
+
+示例2
+
+输入：
+
+```
+{10,5,12,4,7},15
+```
+
+返回值：
+
+```
+[]
+```
+
+分析：
+
+题解：
+
+~~~ java
+
+
+~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
