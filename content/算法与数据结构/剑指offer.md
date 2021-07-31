@@ -1905,25 +1905,62 @@ true
 ```
 
 分析：
+		思路通过根节点，将数组划分为两部分，假设根节点为x，则左子树 < x , 右子树 > x。通过递归即可，递归的每一层都涉及到对序列的遍历，虽然层数越深节点越少（少了子树的根节点），但是这种减少是微不足道的，即使是到了最底层，依旧有n/2的节点（完美二叉树第i层节点数是其上所有节点数之和+1），因此递归方法在每一层的遍历开销是O(n)，而对于二叉树而言，递归的层数平均是O(logn)，因此，递归方法的最终复杂度是O(nlogn).
+
+[另一种大神解法上限约束法](https://blog.nowcoder.net/n/8fe97e67996249ccbe71328d3a49c4af?f=comment)
+
+ <img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210728213700344.png" alt="image-20210728213700344" style="zoom:80%;" /> 
+
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210728213620840.png" alt="image-20210728213620840" style="zoom:80%;" /> 
 
 题解：
 
 ~~~ java
 
+import java.util.*;
+/**
+*时间复杂度：O(nlogn）
+*
+*
+*/
+public class Solution {
+    public boolean VerifySquenceOfBST(int [] sequence) {
+         if(sequence.length < 1){
+            return false;
+        }
+        ArrayList<Integer> list = new ArrayList<>();
+        for(int num : sequence){
+            list.add(num);
+        }
+        return VerifyBST(list);
+    }
+    
+    public  boolean VerifyBST(ArrayList<Integer> list) {
+        if(list.size() < 1){
+            //递归结束条件
+            return true;
+        }
+        int mid = list.get(list.size() - 1);
+        ArrayList<Integer> leftList = new ArrayList<>();
+        ArrayList<Integer> rightList = new ArrayList<>();
 
+        int i = 0;
+        while(list.get(i) < mid){
+            leftList.add(list.get(i++));
+        }
+        while(list.get(i) > mid){
+            rightList.add(list.get(i++));
+        }
 
+        if(i < list.size() - 1){
+            //判断是否走完数组列表
+            //正常走完数组 i = list.size() - 1
+            return false;
+        }
 
-
-
-
-
-
-
-
-
-
-
-
+        return VerifyBST(leftList) && VerifyBST(rightList);
+    }
+}
 ~~~
 
 
@@ -1962,22 +1999,343 @@ true
 []
 ```
 
-分析：
+分析：使用深度优先遍历（DFS）
 
 题解：
 
 ~~~ java
 
+public class Solution {
+    private ArrayList<ArrayList<Integer>> resultList = new ArrayList<>();
+    private ArrayList<Integer> tempList = new ArrayList<>();
+    public ArrayList<ArrayList<Integer>> FindPath(TreeNode root,int target) {
+        
+        if(root == null){
+            //叶子节点走完返回列表
+            return resultList;
+        }
+        
+        tempList.add(root.val);
+        
+        if (root.left == null && root.right == null && target - root.val == 0){
+            resultList.add(new ArrayList<Integer>(tempList));
+        }
+
+        FindPath(root.left, target - root.val);
+        FindPath(root.right, target - root.val);
+        
+        //移除最后一个元素，深度遍历完一条路径后要回退
+        tempList.remove(tempList.size()-1);
+        
+        return resultList;
+    }
+}
 
 ~~~
 
+## 25、**JZ25** **复杂链表的复制**
+
+描述
+
+输入一个复杂链表（每个节点中有节点值，以及两个指针，一个指向下一个节点，另一个特殊指针random指向一个随机节点），请对此链表进行深拷贝，并返回拷贝后的头结点。（注意，输出结果中请不要返回参数中的节点引用，否则判题程序会直接返回空）。 下图是一个含有5个结点的复杂链表。图中实线箭头表示next指针，虚线箭头表示random指针。为简单起见，指向null的指针没有画出。
+
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210729154454708.png" alt="image-20210729154454708" style="zoom:50%;" />  
+
+示例:
+
+输入:{1,2,3,4,5,3,5,#,2,#}
+
+输出:{1,2,3,4,5,3,5,#,2,#}
+
+解析:我们将链表分为两段，前半部分{1,2,3,4,5}为ListNode，后半部分{3,5,#,2,#}是随机指针域表示。
+
+以上示例前半部分可以表示链表为的ListNode:1->2->3->4->5
+
+后半部分，3，5，#，2，#分别的表示为
+
+1的位置指向3，2的位置指向5，3的位置指向null，4的位置指向2，5的位置指向null
+
+如下图:
+
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210729154430590.png" alt="image-20210729154430590" style="zoom:67%;" /> 
+
+示例1
+
+输入：
+
+```
+{1,2,3,4,5,3,5,#,2,#}
+```
+
+返回值：
+
+```
+{1,2,3,4,5,3,5,#,2,#}
+```
+
+分析：
+
+题解：
+
+~~~ java
+/*
+public class RandomListNode {
+    int label;
+    RandomListNode next = null;
+    RandomListNode random = null;
+
+    RandomListNode(int label) {
+        this.label = label;
+    }
+}
+*/
+import java.util.*;
+public class Solution {
+    HashMap<RandomListNode,RandomListNode> map = new HashMap<>();
+    public RandomListNode Clone(RandomListNode pHead) {
+        if(pHead == null)
+            return null;
+
+        if(map.containsKey(pHead)){
+            return map.get(pHead);
+        }
+
+        RandomListNode tempNode = new RandomListNode(pHead.label);
+        map.put(pHead, tempNode);
+        tempNode.next = Clone(pHead.next);
+//         tempNode.random = Clone(pHead.random); // 这一步目的：防止cannot used original node of list
+        tempNode.random = map.get(pHead.random);
+        
+        return tempNode;
+    }
+}
+~~~
+
+## 26、**JZ26** **二叉搜索树与双向链表**
+
+描述
+
+输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的双向链表。如下图所示
+
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/E1F1270919D292C9F48F51975FD07CE2" alt="img" style="zoom: 33%;" /> 
+
+注意:
+
+1.要求不能创建任何新的结点，只能调整树中结点指针的指向。当转化完成以后，树中节点的左指针需要指向前驱，树中节点的右指针需要指向后继
+2.返回链表中的第一个节点的指针
+3.函数返回的TreeNode，有左右指针，其实可以看成一个双向链表的数据结构
+4.你不用输出或者处理，示例中输出里面的英文，比如"From left to right are:"这样的，程序会根据你的返回值自动打印输出
+
+示例:
+
+输入: {10,6,14,4,8,12,16}
+
+输出:From left to right are:4,6,8,10,12,14,16;From right to left are:16,14,12,10,8,6,4;
+
+解析:
+
+输入就是一棵二叉树，如上图，输出的时候会将这个双向链表从左到右输出，以及从右到左输出，确保答案的正确
+
+示例1
+
+输入：
+
+```
+{10,6,14,4,8,12,16}
+```
+
+返回值：
+
+```
+From left to right are:4,6,8,10,12,14,16;From right to left are:16,14,12,10,8,6,4;
+```
+
+示例2
+
+输入：
+
+```
+{5,4,#,3,#,2,#,1}
+```
+
+返回值：
+
+```
+From left to right are:1,2,3,4,5;From right to left are:5,4,3,2,1;
+```
+
+说明：
+
+```
+                    5
+                  /
+                4
+              /
+            3
+          /
+        2
+      /
+    1
+树的形状如上图  
+```
+
+分析：
 
 
 
+题解：
 
+~~~ java
+/**
+public class TreeNode {
+    int val = 0;
+    TreeNode left = null;
+    TreeNode right = null;
 
+    public TreeNode(int val) {
+        this.val = val;
 
+    }
 
+}
+*/
+public class Solution {
+    public TreeNode Convert(TreeNode pRootOfTree) {
+        
+    }
+}
+~~~
+
+## 27、**JZ27** **字符串的排列**
+
+描述
+
+输入一个字符串，打印出该字符串中字符的所有排列，你可以以任意顺序返回这个字符串数组。例如输入字符串abc,则按字典序打印出由字符a,b,c所能排列出来的所有字符串abc,acb,bac,bca,cab和cba。
+
+输入描述：
+
+输入一个字符串,长度不超过9(可能有字符重复),字符只包括大小写字母。
+
+示例1
+
+输入：
+
+```
+"ab"
+```
+
+返回值：
+
+```
+["ab","ba"]
+```
+
+说明：
+
+```
+返回["ba","ab"]也是正确的  
+```
+
+示例2
+
+输入：
+
+```
+"aab"
+```
+
+返回值：
+
+```
+["aab","aba","baa"]
+```
+
+示例3
+
+输入：
+
+```
+"abc"
+```
+
+返回值：
+
+```
+["abc","acb","bac","bca","cab","cba"]
+```
+
+分析：
+
+题解：
+
+~~~ java
+import java.util.ArrayList;
+public class Solution {
+    public ArrayList<String> Permutation(String str) {
+       
+    }
+}
+~~~
+
+## 28、 **JZ28** **数组中出现次数超过一半的数字**
+
+描述
+
+数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组[1,2,3,2,2,2,5,4,2]。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。你可以假设数组是非空的，并且给定的数组总是存在多数元素。1<=数组长度<=50000，0<=数组元素<=10000
+
+示例1
+
+输入：
+
+```
+[1,2,3,2,2,2,5,4,2]
+```
+
+返回值：
+
+```
+2
+```
+
+示例2
+
+输入：
+
+```
+[3,3,3,3,2,2,2]
+```
+
+返回值：
+
+```
+3
+```
+
+示例3
+
+输入：
+
+```
+[1]
+```
+
+返回值：
+
+```
+1
+```
+
+分析：
+
+题解：
+
+~~~ java
+public class Solution {
+    public int MoreThanHalfNum_Solution(int [] array) {
+        
+    }
+}
+~~~
 
 
 
