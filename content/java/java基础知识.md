@@ -340,3 +340,66 @@ Class<?> tagetClass = Class.forName("cn.javaguide.TargetObject");
 3. **静态内部类（static 修饰类的话只能修饰内部类）：** 静态内部类与非静态内部类之间存在一个最大的区别: **<font color='red'>非静态内部类在编译完成之后会隐含地保存着一个引用，该引用是指向创建它的外围类，但是静态内部类却没有。</font>**没有这个引用就意味着：1. 它的创建是不需要依赖外围类的创建。2. 它不能使用任何外围类的非 static 成员变量和方法。
 4. **静态导包(用来导入类中的静态资源，1.5 之后的新特性):** 格式为：`import static` 这两个关键字连用可以指定导入某个类中的指定静态资源，并且不需要使用类名调用类中静态成员，可以直接使用类中静态成员变量和成员方法。
 
+## 各种集合key，value能否为null
+
+### HashMap
+
+key，value都可以为null
+
+```java
+static final int hash(Object key) {
+    int h;
+    return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
+}
+```
+
+
+key只能有一个为null，多个key=null的会覆盖，value可以多个为null
+
+```java
+    HashMap<Integer, Integer> map = new HashMap<>();
+    map.put(1, null);
+    map.put(2, null);
+    map.put(null, 1);
+    map.put(null, 2);
+    System.out.println(map);//{null=2, 1=null, 2=null}
+```
+### Hashtable
+
+key，value都不能为null
+
+```java
+    // Make sure the value is not null
+    if (value == null) {
+        throw new NullPointerException();
+    }
+
+    // Makes sure the key is not already in the hashtable.
+    Entry<?,?> tab[] = table;
+    int hash = key.hashCode();
+```
+直接调用key.hashcode方法，所以key不能为null
+value为null，抛出空指针
+
+### ConcurrentHashMap
+
+key，value都不能为null
+
+```java
+    if (key == null || value == null) throw new NullPointerException();
+    int hash = spread(key.hashCode());
+```
+key或value为null，抛出空指针
+key调用hashcode方法后，用spread方法二次hash
+
+### TreeMap
+
+key不能为null，value可以为null
+
+```java
+        if (key == null)
+            throw new NullPointerException();
+```
+
+key为null，抛出空指针
+

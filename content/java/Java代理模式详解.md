@@ -254,7 +254,7 @@ smsService.send("java");
 
 运行上述代码之后，控制台打印出：
 
-```
+```java
 before method send
 send message:java
 after method send
@@ -403,5 +403,5 @@ after method send
 
 ## 5. 为什么代理对象需要实现一个接口（为啥JDK动态代理只能代理实现了接口的类？）
 
-代理类与目标类需要建立联系,并且对于调用者来说基本要做到无感知。<font color='red'> jdk的动态代理选择的是实现的方式</font>，<font color='red'>CGLIB选择的是继承</font>（ <font color='red'>**CGLIB 动态代理是通过生成一个被代理类的子类来拦截被代理类的方法调用，因此不能代理声明为 final 类型的类和方法**</font>。）。因为JDK动态代理类已经继承了Proxy这个类，所以只能通过接口来与被代理类建立联系（两个类建立起联系，一是继承的关系【jdk已经不能通过这个方式了，因为java仅支持单继承】，另一种就是实现同一个接口【JDK动态代理选这种】），所以必须要求被代理类也得实现一个接口，这样的话代理类与被代理类就能通过这个接口建立联系了。（[可参考](https://blog.csdn.net/zxysshgood/article/details/78684229)）
+代理类与目标类需要建立联系,并且对于调用者来说基本要做到无感知。<font color='red'>JDK的动态代理选择的是实现的方式</font>，<font color='red'>CGLIB选择的是继承</font>（ <font color='red'>**CGLIB 动态代理是通过生成一个被代理类的子类来拦截被代理类的方法调用，因此不能代理声明为 final 类型的类和方法**</font>。）。因为JDK动态代理类已经继承了Proxy这个类，所以只能通过接口来与被代理类建立联系（两个类建立起联系，一是继承的关系【jdk已经不能通过这个方式了，因为java仅支持单继承】，另一种就是实现同一个接口【JDK动态代理选这种】），所以必须要求被代理类也得实现一个接口，这样的话代理类与被代理类就能通过这个接口建立联系了。（[可参考](https://blog.csdn.net/zxysshgood/article/details/78684229)）
 
