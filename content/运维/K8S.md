@@ -243,6 +243,71 @@ ps：cpu：100m相当于0.1核cpu，1cpu = 1000m
 
 &emsp;**&emsp;七层负载均衡**，则是在四层基础上，再去考虑应用层的特征。比如说一个WEB服务器的负载均衡，除了根据IP+80端口来判断之外，还可以根据七层URL，浏览器类别，来决定如何去转发流量。
 
+## K8s常见的日志采集问题和解决方案
+
+​    <img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210901170636589.png" alt="image-20210901170636589" style="zoom: 33%;" />
+
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210901170705490.png" alt="image-20210901170705490" style="zoom:50%;" /> 
+
+### 常见方案
+
+#### 远程日志
+
+<img src="C:/Users/Aaron/AppData/Roaming/Typora/typora-user-images/image-20210901210053905.png" alt="image-20210901210053905" style="zoom: 67%;" /> 
+
+#### SideCar
+
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210901210157926.png" alt="image-20210901210157926" style="zoom:67%;" /> 
+
+#### LogAgent
+
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210901210324348.png" alt="image-20210901210324348" style="zoom:50%;" /> 
+
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210901210434834.png" alt="image-20210901210434834" style="zoom:50%;" /> 
+
+#### LogPilot
+
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210901210544797.png" alt="image-20210901210544797" style="zoom:50%;" /> 
+
+## K8s的监控
+
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210901210712114.png" alt="image-20210901210712114" style="zoom:50%;" /> 
+
+
+
+### Prometheus
+
+- 一系列服务的组合
+- 系统和服务的监控报警平台
+
+#### 特征
+
+##### <img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210901210946438.png" alt="image-20210901210946438" style="zoom:33%;" />
+
+#### 架构
+
+![image-20210901211040147](https://gitee.com/aaronlynn/picture/raw/master/img/image-20210901211040147.png)
+
+#### 数据类型
+
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210901211108838.png" alt="image-20210901211108838" style="zoom:50%;" /> 
+
+#### 数据来源
+
+##### 服务器基础指标
+
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210901212054932.png" alt="image-20210901212054932" style="zoom: 67%;" /> 
+
+##### docker容器指标
+
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210901212151458.png" alt="image-20210901212151458" style="zoom: 67%;" /> 
+
+k8s组件
+
+![image-20210901212351674](https://gitee.com/aaronlynn/picture/raw/master/img/image-20210901212351674.png)
+
+
+
 ## 基于K8s开发一个容器管理平台
 
 &emsp;&emsp;未完待续.....
