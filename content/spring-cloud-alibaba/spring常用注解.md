@@ -413,3 +413,56 @@ public class HelloController {
 }
 ~~~
 
+## 五、@Component和@Bean的区别
+
+&emsp;&emsp;Spring帮助我们管理Bean分为两个部分，一个是注册Bean，一个装配Bean。
+&emsp;&emsp;完成这两个动作有三种方式，一种是使用自动配置的方式、一种是使用JavaConfig的方式，一种就是使用XML配置的方式。
+
+@Compent 作用就相当于 XML配置
+
+```java
+@Component
+public class Student {
+    
+	private String name = "lkm";
+
+	public String getName() {
+    	return name;
+	}
+
+	public void setName(String name) {
+    	this.name = name;
+	}
+}
+```
+@Bean 需要在配置类中使用，即类上需要加上@Configuration注解
+~~~ java
+@Configuration
+public class WebSocketConfig {
+    @Bean
+    public Student student(){
+        return new Student();
+    }
+
+}
+~~~
+
+两者都可以通过@Autowired装配
+
+~~~ java
+@Autowired
+Student student;
+~~~
+
+那为什么有了@Compent,还需要@Bean呢？
+&emsp;&emsp;如果你想要将第三方库中的组件装配到你的应用中，在这种情况下，是没有办法在它的类上添加@Component注解的，因此就不能使用自动化装配的方案了，但是我们可以使用@Bean,当然也可以使用XML配置。
+
+**<font color='red'>区别：</font>**
+
+@Component（@Controller、@Service、@Repository）通常是通过类路径扫描来自动侦测以及自动装配到Spring容器中。
+
+而@Bean注解通常是我们在标有该注解的方法中定义产生这个bean的逻辑。
+
+@Component 作用于类，@Bean作用于方法。
+
+
