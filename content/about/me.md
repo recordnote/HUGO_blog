@@ -10,8 +10,3 @@ Aaron 的 ❤️ 博客
 
 职业是后端工程师
 
-写着玩：
-
-- Clojure & CLJS
-- OCaml & Reason & ReScript
-- Dart & Swift
