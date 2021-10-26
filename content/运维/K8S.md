@@ -4,9 +4,9 @@ date: 2021-03-31T14:21:26+08:00
 lastmod: 2021-03-31T14:21:26+08:00
 author: Aaron
 avatar: /me/yy.jpg
-cover: 
+cover: /img/k8s.png
 images:
-  -  /img/k8s.png
+  - /img/k8s.png
 categories:
   - 运维
 tags:
