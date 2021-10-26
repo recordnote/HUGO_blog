@@ -4,9 +4,9 @@ date: 2021-07-31T14:21:26+08:00
 lastmod: 2021-05-31T14:21:26+08:00
 author: Aaron
 avatar: /me/yy.jpg
-cover: /img/redis.png
+cover: /img/redis.gif
 images:
-  - /img/redis.png
+  - /img/redis.gif
 categories:
   - 数据库
 tags:
