@@ -6,7 +6,7 @@ author: Aaron
 avatar: /me/yy.jpg
 cover: 
 images:
-  -  https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fstatic.leiphone.com%2Fuploads%2Fnew%2Farticle%2Fpic%2F202103%2F603f005de7d9a.png%3FimageMogr2%2Fthumbnail%2F%21242x145r%2Fgravity%2FCenter%2Fcrop%2F242x145%2Fquality%2F90&refer=http%3A%2F%2Fstatic.leiphone.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1632990869&t=b9f193f7c67b216ce072731a814fc8ee
+  -  /img/k8s.png
 categories:
   - 运维
 tags:
