@@ -16,9 +16,9 @@ weight: 1
 
 首先我给大家看一张图，如果大家对这张图有些地方不太理解的话，我希望你们看完我这篇文章会恍然大悟。
 
-![Spring Cloud 总体架构](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/spring-cloud总体架构.jpg)
+![image-20211113131845319](https://gitee.com/aaronlynn/picture/raw/master/img/image-20211113131845319.png)
 
-## [什么是Spring cloud](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=什么是spring-cloud)
+## 什么是Spring cloud
 
 > 构建分布式系统不需要复杂和容易出错。Spring Cloud 为最常见的分布式系统模式提供了一种简单且易于接受的编程模型，帮助开发人员构建有弹性的、可靠的、协调的应用程序。Spring Cloud 构建于 Spring Boot 之上，使得开发者很容易入手并快速应用于生产中。
 
@@ -26,13 +26,13 @@ weight: 1
 
 我所理解的 `Spring Cloud` 就是微服务系统架构的一站式解决方案，在平时我们构建微服务的过程中需要做如 **服务发现注册** 、**配置中心** 、**消息总线** 、**负载均衡** 、**断路器** 、**数据监控** 等操作，而 Spring Cloud 为我们提供了一套简易的编程模型，使我们能在 Spring Boot 的基础上轻松地实现微服务项目的构建。
 
-## [Spring Cloud 的版本](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=spring-cloud-的版本)
+## Spring Cloud 的版本
 
 当然这个只是个题外话。
 
 `Spring Cloud` 的版本号并不是我们通常见的数字版本号，而是一些很奇怪的单词。这些单词均为英国伦敦地铁站的站名。同时根据字母表的顺序来对应版本时间顺序，比如：最早 的 `Release` 版本 `Angel`，第二个 `Release` 版本 `Brixton`（英国地名），然后是 `Camden`、 `Dalston`、`Edgware`、`Finchley`、`Greenwich`、`Hoxton`。
 
-## [Spring Cloud 的服务发现框架——Eureka](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=spring-cloud-的服务发现框架eureka)
+## Spring Cloud 的服务发现框架——Eureka
 
 > `Eureka`是基于`REST`（代表性状态转移）的服务，主要在 `AWS` 云中用于定位服务，以实现负载均衡和中间层服务器的故障转移。我们称此服务为`Eureka`服务器。Eureka还带有一个基于 `Java` 的客户端组件 `Eureka Client`，它使与服务的交互变得更加容易。客户端还具有一个内置的负载平衡器，可以执行基本的循环负载平衡。在 `Netflix`，更复杂的负载均衡器将 `Eureka` 包装起来，以基于流量，资源使用，错误条件等多种因素提供加权负载均衡，以提供出色的弹性。
 
@@ -46,11 +46,13 @@ weight: 1
 
 那怎么办呢？我们当然不会那么傻乎乎的，第一时间就是去找 **中介** 呀，它为我们提供了统一房源的地方，我们消费者只需要跑到它那里去找就行了。而对于房东来说，他们也只需要把房源在中介那里发布就行了。
 
-![img](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/4d161e2950414113834f2f0a8fc2c16c-new-imaged17347a0-e653-4830-9542-3d7ae4305b2b.png)
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20211113132010667.png" alt="image-20211113132010667" style="zoom:67%;" />
+
+
 
 那么现在，我们的模式就是这样的了。
 
-![img](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/24382ce6bbd44932ac38b1accade12d1-new-image2ff8affc-6f1d-49de-a8c3-801e7bad2b11.png)
+![image-20211113131955700](https://gitee.com/aaronlynn/picture/raw/master/img/image-20211113131955700.png)
 
 但是，这个时候还会出现一些问题。
 
@@ -60,7 +62,7 @@ weight: 1
 
 针对上面的问题我们来重新构建一下上面的模式图
 
-![租房-中介模式图](https://gitee.com/aaronlynn/picture/raw/master/img/%E7%A7%9F%E6%88%BF-%E4%B8%AD%E4%BB%8B%E6%A8%A1%E5%BC%8F%E5%9B%BE.jpg)
+![image-20211113132114630](https://gitee.com/aaronlynn/picture/raw/master/img/image-20211113132114630.png)
 
 好了，举完这个![chestnut](https://github.githubassets.com/images/icons/emoji/unicode/1f330.png)我们就可以来看关于 `Eureka` 的一些基础概念了，你会发现这东西理解起来怎么这么简单。![punch](https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png)![punch](https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png)![punch](https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png)
 
@@ -110,9 +112,9 @@ weight: 1
 
 更多关于 `Eureka` 的知识(自我保护，初始注册策略等等)可以自己去官网查看，或者查看我的另一篇文章 [深入理解 Eureka](https://juejin.im/post/5dd497e3f265da0ba7718018)。
 
-## [负载均衡之 Ribbon](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=负载均衡之-ribbon)
+## 负载均衡之 Ribbon
 
-### [什么是 `RestTemplate`?](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=什么是-resttemplate)
+### 什么是 `RestTemplate`?
 
 不是讲 `Ribbon` 么？怎么扯到了 `RestTemplate` 了？你先别急，听我慢慢道来。
 
@@ -135,23 +137,23 @@ public boolean judge(@RequestBody Request request) {
 
 如果你对源码感兴趣的话，你会发现上面我们所讲的 `Eureka` 框架中的 **注册**、**续约** 等，底层都是使用的 `RestTemplate` 。
 
-### [为什么需要 Ribbon？](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=为什么需要-ribbon？)
+### 为什么需要 Ribbon？
 
 `Ribbon` 是 `Netflix` 公司的一个开源的负载均衡 项目，是一个客户端/进程内负载均衡器，**运行在消费者端**。
 
 我们再举个![chestnut](https://github.githubassets.com/images/icons/emoji/unicode/1f330.png)，比如我们设计了一个秒杀系统，但是为了整个系统的 **高可用** ，我们需要将这个系统做一个集群，而这个时候我们消费者就可以拥有多个秒杀系统的调用途径了，如下图。
 
-![img](https://gitee.com/aaronlynn/picture/raw/master/img/%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-ribbon.jpg)
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20211113132311599.png" alt="image-20211113132311599" style="zoom:80%;" />
 
 如果这个时候我们没有进行一些 **均衡操作** ，如果我们对 `秒杀系统1` 进行大量的调用，而另外两个基本不请求，就会导致 `秒杀系统1` 崩溃，而另外两个就变成了傀儡，那么我们为什么还要做集群，我们高可用体现的意义又在哪呢？
 
 所以 `Ribbon` 出现了，注意我们上面加粗的几个字——**运行在消费者端**。指的是，`Ribbon` 是运行在消费者端的负载均衡器，如下图。
 
-![img](https://gitee.com/aaronlynn/picture/raw/master/img/%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F-ribbon2.jpg)
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20211113132330076.png" alt="image-20211113132330076" style="zoom: 80%;" />
 
 其工作原理就是 `Consumer` 端获取到了所有的服务列表之后，在其**内部**使用**负载均衡算法**，进行对多个系统的调用。
 
-### [Nginx 和 Ribbon 的对比](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=nginx-和-ribbon-的对比)
+### Nginx 和 Ribbon 的对比
 
 提到 **负载均衡** 就不得不提到大名鼎鼎的 `Nignx` 了，而和 `Ribbon` 不同的是，它是一种**集中式**的负载均衡器。
 
@@ -165,7 +167,7 @@ public boolean judge(@RequestBody Request request) {
 
 > 请注意 `Request` 的位置，在 `Nginx` 中请求是先进入负载均衡器，而在 `Ribbon` 中是先在客户端进行负载均衡才进行请求的。
 
-### [Ribbon 的几种负载均衡算法](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=ribbon-的几种负载均衡算法)
+### Ribbon 的几种负载均衡算法
 
 负载均衡，不管 `Nginx` 还是 `Ribbon` 都需要其算法的支持，如果我没记错的话 `Nginx` 使用的是 轮询和加权轮询算法。而在 `Ribbon` 中有更多的负载均衡调度算法，其默认是使用的 `RoundRobinRule` 轮询策略。
 
@@ -183,7 +185,7 @@ providerName:
 
 当然，在 `Ribbon` 中你还可以**自定义负载均衡算法**，你只需要实现 `IRule` 接口，然后修改配置文件或者自定义 `Java Config` 类。
 
-## [什么是 Open Feign](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=什么是-open-feign)
+## 什么是 Open Feign
 
 有了 `Eureka` ，`RestTemplate` ，`Ribbon`， 我们就可以愉快地进行服务间的调用了，但是使用 `RestTemplate` 还是不方便，我们每次都要进行这样的调用。
 
@@ -236,9 +238,9 @@ public class TestController {
 }Copy to clipboardErrorCopied
 ```
 
-## [必不可少的 Hystrix](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=必不可少的-hystrix)
+## 必不可少的 Hystrix
 
-### [什么是 Hystrix之熔断和降级](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=什么是-hystrix之熔断和降级)
+### 什么是 Hystrix之熔断和降级
 
 > 在分布式环境中，不可避免地会有许多服务依赖项中的某些失败。Hystrix是一个库，可通过添加等待时间容限和容错逻辑来帮助您控制这些分布式服务之间的交互。Hystrix通过隔离服务之间的访问点，停止服务之间的级联故障并提供后备选项来实现此目的，所有这些都可以提高系统的整体弹性。
 
@@ -295,13 +297,13 @@ public News getHystrixNews(@PathVariable("id") int id) {
 }Copy to clipboardErrorCopied
 ```
 
-### [什么是Hystrix之其他](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=什么是hystrix之其他)
+### 什么是Hystrix之其他
 
 我在阅读 《Spring微服务实战》这本书的时候还接触到了一个 **舱壁模式** 的概念。在不使用舱壁模式的情况下，服务A调用服务B，这种调用默认的是 **使用同一批线程来执行** 的，而在一个服务出现性能问题的时候，就会出现所有线程被刷爆并等待处理工作，同时阻塞新请求，最终导致程序崩溃。而舱壁模式会将远程资源调用隔离在他们自己的线程池中，以便可以控制单个表现不佳的服务，而不会使该程序崩溃。
 
 具体其原理我推荐大家自己去了解一下，本篇文章中对 **舱壁模式** 不做过多解释。当然还有 **`Hystrix` 仪表盘**，它是**用来实时监控 `Hystrix` 的各项指标信息的**，这里我将这个问题也抛出去，希望有不了解的可以自己去搜索一下。
 
-## [微服务网关——Zuul](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=微服务网关zuul)
+## 微服务网关——Zuul
 
 > ZUUL 是从设备和 web 站点到 Netflix 流应用后端的所有请求的前门。作为边界服务应用，ZUUL 是为了实现动态路由、监视、弹性和安全性而构建的。它还具有根据情况将请求路由到多个 Amazon Auto Scaling Groups（亚马逊自动缩放组，亚马逊的一种云计算方式） 的能力
 
@@ -317,9 +319,9 @@ public News getHystrixNews(@PathVariable("id") int id) {
 
 > Router and Filter : Zuul
 
-### [Zuul 的路由功能](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=zuul-的路由功能)
+### Zuul 的路由功能
 
-#### [简单配置](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=简单配置)
+#### 简单配置
 
 本来想给你们复制一些代码，但是想了想，因为各个代码配置比较零散，看起来也比较零散，我决定还是给你们画个图来解释吧。
 
@@ -327,7 +329,7 @@ public News getHystrixNews(@PathVariable("id") int id) {
 
 比如这个时候我们已经向 `Eureka Server` 注册了两个 `Consumer` 、三个 `Provicer` ，这个时候我们再加个 `Zuul` 网关应该变成这样子了。
 
-![img](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/zuul-sj22o93nfdsjkdsf2312.jpg)
+![image-20211113132445419](https://gitee.com/aaronlynn/picture/raw/master/img/image-20211113132445419.png)
 
 emmm，信息量有点大，我来解释一下。关于前面的知识我就不解释了![neutral_face](https://gitee.com/aaronlynn/picture/raw/master/img/1f610.png)。
 
@@ -357,7 +359,7 @@ eureka:
 
 然后在启动类上加入 `@EnableZuulProxy` 注解就行了。没错，就是那么简单![smiley](https://gitee.com/aaronlynn/picture/raw/master/img/1f603.png)。
 
-#### [统一前缀](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=统一前缀)
+#### 统一前缀
 
 这个很简单，就是我们可以在前面加一个统一的前缀，比如我们刚刚调用的是 `localhost:9000/consumer1/studentInfo/update`，这个时候我们在 `yaml` 配置文件中添加如下。
 
@@ -368,7 +370,7 @@ zuul:
 
 这样我们就需要通过 `localhost:9000/zuul/consumer1/studentInfo/update` 来进行访问了。
 
-#### [路由策略配置](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=路由策略配置)
+#### 路由策略配置
 
 你会发现前面的访问方式(直接使用服务名)，需要将微服务名称暴露给用户，会存在安全性问题。所以，可以自定义路径来替代微服务名称，即自定义路由策略。
 
@@ -381,7 +383,7 @@ zuul:
 
 这个时候你就可以使用 ` `localhost:9000/zuul/FrancisQ1/studentInfo/update` 进行访问了。
 
-#### [服务名屏蔽](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=服务名屏蔽)
+#### 服务名屏蔽
 
 这个时候你别以为你好了，你可以试试，在你配置完路由策略之后使用微服务名称还是可以访问的，这个时候你需要将服务名屏蔽。
 
@@ -390,7 +392,7 @@ zuul:
   ignore-services: "*"Copy to clipboardErrorCopied
 ```
 
-#### [路径屏蔽](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=路径屏蔽)
+#### 路径屏蔽
 
 `Zuul` 还可以指定屏蔽掉的路径 URI，即只要用户请求中包含指定的 URI 路径，那么该请求将无法访问到指定的服务。通过该方式可以限制用户的权限。
 
@@ -405,15 +407,15 @@ zuul:
 >
 > *代表匹配一级任意路径
 
-#### [敏感请求头屏蔽](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=敏感请求头屏蔽)
+#### 敏感请求头屏蔽
 
 默认情况下，像 `Cookie`、`Set-Cookie` 等敏感请求头信息会被 `zuul` 屏蔽掉，我们可以将这些默认屏蔽去掉，当然，也可以添加要屏蔽的请求头。
 
-### [Zuul 的过滤功能](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=zuul-的过滤功能)
+### Zuul 的过滤功能
 
 如果说，路由功能是 `Zuul` 的基操的话，那么**过滤器**就是 `Zuul`的利器了。毕竟所有请求都经过网关(Zuul)，那么我们可以进行各种过滤，这样我们就能实现 **限流**，**灰度发布**，**权限控制** 等等。
 
-#### [简单实现一个请求时间日志打印](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=简单实现一个请求时间日志打印)
+#### 简单实现一个请求时间日志打印
 
 要实现自己定义的 `Filter` 我们只需要继承 `ZuulFilter` 然后将这个过滤器类以 `@Component` 注解加入 Spring 容器中就行了。
 
@@ -495,11 +497,11 @@ public class AccessLogFilter extends ZuulFilter {
 
 没有？好的、那我们再来。
 
-#### [令牌桶限流](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=令牌桶限流)
+#### 令牌桶限流
 
 当然不仅仅是令牌桶限流方式，`Zuul` 只要是限流的活它都能干，这里我只是简单举个![chestnut](https://github.githubassets.com/images/icons/emoji/unicode/1f330.png)。
 
-![令牌桶限流](https://gitee.com/aaronlynn/picture/raw/master/img/zuui-%E4%BB%A4%E7%89%8C%E6%A1%B6%E9%99%90%E6%B5%81.jpg)
+<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20211113132517376.png" alt="image-20211113132517376" style="zoom:67%;" />
 
 我先来解释一下什么是 **令牌桶限流** 吧。
 
@@ -557,7 +559,7 @@ public class RouteFilter extends ZuulFilter {
 
 这样我们就能将请求数量控制在一秒两个，有没有觉得很酷？
 
-### [关于 Zuul 的其他](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=关于-zuul-的其他)
+### 关于 Zuul 的其他
 
 `Zuul` 的过滤器的功能肯定不止上面我所实现的两种，它还可以实现 **权限校验**，包括我上面提到的 **灰度发布** 等等。
 
@@ -565,7 +567,7 @@ public class RouteFilter extends ZuulFilter {
 
 \##Spring Cloud配置管理——Config
 
-### [为什么要使用进行配置管理？](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=为什么要使用进行配置管理？)
+### 为什么要使用进行配置管理？
 
 当我们的微服务系统开始慢慢地庞大起来，那么多 `Consumer` 、`Provider` 、`Eureka Server` 、`Zuul` 系统都会持有自己的配置，这个时候我们在项目运行的时候可能需要更改某些应用的配置，如果我们不进行配置的统一管理，我们只能**去每个应用下一个一个寻找配置文件然后修改配置文件再重启应用**。
 
@@ -577,7 +579,7 @@ public class RouteFilter extends ZuulFilter {
 
 > 能进行配置管理的框架不止 `Spring Cloud Config` 一种，大家可以根据需求自己选择（`disconf`，阿波罗等等）。而且对于 `Config` 来说有些地方实现的不是那么尽人意。
 
-### [Config 是什么](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=config-是什么)
+### Config 是什么
 
 > `Spring Cloud Config` 为分布式系统中的外部化配置提供服务器和客户端支持。使用 `Config` 服务器，可以在中心位置管理所有环境中应用程序的外部属性。
 
@@ -603,7 +605,7 @@ public class RouteFilter extends ZuulFilter {
 
 而一般我们会使用 `Bus` 消息总线 + `Spring Cloud Config` 进行配置的动态刷新。
 
-## [引出 Spring Cloud Bus](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=引出-spring-cloud-bus)
+## 引出 Spring Cloud Bus
 
 > 用于将服务和服务实例与分布式消息系统链接在一起的事件总线。在集群中传播状态更改很有用（例如配置更改事件）。
 
@@ -613,7 +615,7 @@ public class RouteFilter extends ZuulFilter {
 
 ![img](https://gitee.com/aaronlynn/picture/raw/master/img/springcloud-bus-s213dsfsd.jpg)
 
-## [总结](https://snailclimb.gitee.io/javaguide/#/docs/system-design/micro-service/spring-cloud?id=总结)
+## 总结
 
 这篇文章中我带大家初步了解了 `Spring Cloud` 的各个组件，他们有
 
