@@ -16,7 +16,7 @@ weight: 1
 
 首先我给大家看一张图，如果大家对这张图有些地方不太理解的话，我希望你们看完我这篇文章会恍然大悟。
 
-![image-20211113131845319](https://gitee.com/aaronlynn/picture/raw/master/img/image-20211113131845319.png)
+![image-20211113131845319](https://cdn.jsdelivr.net/gh/recordnote/cdn/img/image-20211113131845319.png)
 
 ## 什么是Spring cloud
 
@@ -46,13 +46,13 @@ weight: 1
 
 那怎么办呢？我们当然不会那么傻乎乎的，第一时间就是去找 **中介** 呀，它为我们提供了统一房源的地方，我们消费者只需要跑到它那里去找就行了。而对于房东来说，他们也只需要把房源在中介那里发布就行了。
 
-<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20211113132010667.png" alt="image-20211113132010667" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/recordnote/cdn/img/image-20211113132010667.png" alt="image-20211113132010667" style="zoom:67%;" />
 
 
 
 那么现在，我们的模式就是这样的了。
 
-![image-20211113131955700](https://gitee.com/aaronlynn/picture/raw/master/img/image-20211113131955700.png)
+![image-20211113131955700](https://cdn.jsdelivr.net/gh/recordnote/cdn/img/image-20211113131955700.png)
 
 但是，这个时候还会出现一些问题。
 
@@ -62,7 +62,7 @@ weight: 1
 
 针对上面的问题我们来重新构建一下上面的模式图
 
-![image-20211113132114630](https://gitee.com/aaronlynn/picture/raw/master/img/image-20211113132114630.png)
+![image-20211113132114630](https://cdn.jsdelivr.net/gh/recordnote/cdn/img/image-20211113132114630.png)
 
 好了，举完这个![chestnut](https://github.githubassets.com/images/icons/emoji/unicode/1f330.png)我们就可以来看关于 `Eureka` 的一些基础概念了，你会发现这东西理解起来怎么这么简单。![punch](https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png)![punch](https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png)![punch](https://github.githubassets.com/images/icons/emoji/unicode/1f44a.png)
 
@@ -106,7 +106,7 @@ weight: 1
 
 下面就是 `Netflix` 官方给出的 `Eureka` 架构图，你会发现和我们前面画的中介图别无二致。
 
-![Eureka架构图](https://gitee.com/aaronlynn/picture/raw/master/img/5d723c49eca1468ab7b89af06743023c-new-imageb8aa3d41-fad4-4b38-add9-c304930ab285.png)
+![Eureka架构图](https://cdn.jsdelivr.net/gh/recordnote/cdn/img/5d723c49eca1468ab7b89af06743023c-new-imageb8aa3d41-fad4-4b38-add9-c304930ab285.png)
 
 当然，可以充当服务发现的组件有很多：`Zookeeper` ，`Consul` ， `Eureka` 等。
 
@@ -143,13 +143,13 @@ public boolean judge(@RequestBody Request request) {
 
 我们再举个![chestnut](https://github.githubassets.com/images/icons/emoji/unicode/1f330.png)，比如我们设计了一个秒杀系统，但是为了整个系统的 **高可用** ，我们需要将这个系统做一个集群，而这个时候我们消费者就可以拥有多个秒杀系统的调用途径了，如下图。
 
-<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20211113132311599.png" alt="image-20211113132311599" style="zoom:80%;" />
+<img src="https://cdn.jsdelivr.net/gh/recordnote/cdn/img/image-20211113132311599.png" alt="image-20211113132311599" style="zoom:80%;" />
 
 如果这个时候我们没有进行一些 **均衡操作** ，如果我们对 `秒杀系统1` 进行大量的调用，而另外两个基本不请求，就会导致 `秒杀系统1` 崩溃，而另外两个就变成了傀儡，那么我们为什么还要做集群，我们高可用体现的意义又在哪呢？
 
 所以 `Ribbon` 出现了，注意我们上面加粗的几个字——**运行在消费者端**。指的是，`Ribbon` 是运行在消费者端的负载均衡器，如下图。
 
-<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20211113132330076.png" alt="image-20211113132330076" style="zoom: 80%;" />
+<img src="https://cdn.jsdelivr.net/gh/recordnote/cdn/img/image-20211113132330076.png" alt="image-20211113132330076" style="zoom: 80%;" />
 
 其工作原理就是 `Consumer` 端获取到了所有的服务列表之后，在其**内部**使用**负载均衡算法**，进行对多个系统的调用。
 
@@ -159,11 +159,11 @@ public boolean judge(@RequestBody Request request) {
 
 何为集中式呢？简单理解就是 **将所有请求都集中起来，然后再进行负载均衡**。如下图。
 
-![img](https://gitee.com/aaronlynn/picture/raw/master/img/nginx-vs-ribbon1.jpg)
+![img](https://cdn.jsdelivr.net/gh/recordnote/cdn/img/nginx-vs-ribbon1.jpg)
 
 我们可以看到 `Nginx` 是接收了所有的请求进行负载均衡的，而对于 `Ribbon` 来说它是在消费者端进行的负载均衡。如下图。
 
-![img](https://gitee.com/aaronlynn/picture/raw/master/img/nginx-vs-ribbon2.jpg)
+![img](https://cdn.jsdelivr.net/gh/recordnote/cdn/img/nginx-vs-ribbon2.jpg)
 
 > 请注意 `Request` 的位置，在 `Nginx` 中请求是先进入负载均衡器，而在 `Ribbon` 中是先在客户端进行负载均衡才进行请求的。
 
@@ -248,19 +248,19 @@ public class TestController {
 
 那么什么是 熔断和降级 呢？再举个![chestnut](https://github.githubassets.com/images/icons/emoji/unicode/1f330.png)，此时我们整个微服务系统是这样的。服务A调用了服务B，服务B再调用了服务C，但是因为某些原因，服务C顶不住了，这个时候大量请求会在服务C阻塞。
 
-![img](https://gitee.com/aaronlynn/picture/raw/master/img/Hystrix1.jpg)
+![img](https://cdn.jsdelivr.net/gh/recordnote/cdn/img/Hystrix1.jpg)
 
 服务C阻塞了还好，毕竟只是一个系统崩溃了。但是请注意这个时候因为服务C不能返回响应，那么服务B调用服务C的的请求就会阻塞，同理服务B阻塞了，那么服务A也会阻塞崩溃。
 
 > 请注意，为什么阻塞会崩溃。因为这些请求会消耗占用系统的线程、IO 等资源，消耗完你这个系统服务器不就崩了么。
 
-![img](https://gitee.com/aaronlynn/picture/raw/master/img/Hystrix2.jpg)
+![img](https://cdn.jsdelivr.net/gh/recordnote/cdn/img/Hystrix2.jpg)
 
 这就叫 **服务雪崩**。妈耶，上面两个 **熔断** 和 **降级** 你都没给我解释清楚，你现在又给我扯什么 **服务雪崩** ？![tired_face](https://github.githubassets.com/images/icons/emoji/unicode/1f62b.png)![tired_face](https://github.githubassets.com/images/icons/emoji/unicode/1f62b.png)![tired_face](https://github.githubassets.com/images/icons/emoji/unicode/1f62b.png)
 
 别急，听我慢慢道来。
 
-![img](https://gitee.com/aaronlynn/picture/raw/master/img/513d7e7f6d574fd799195d05556f4aa7-new-image9265b6bd-41ca-4e62-86f3-4341e5bdbe6c.png)
+![img](https://cdn.jsdelivr.net/gh/recordnote/cdn/img/513d7e7f6d574fd799195d05556f4aa7-new-image9265b6bd-41ca-4e62-86f3-4341e5bdbe6c.png)
 
 不听我也得讲下去！
 
@@ -309,11 +309,11 @@ public News getHystrixNews(@PathVariable("id") int id) {
 
 在上面我们学习了 `Eureka` 之后我们知道了 *服务提供者* 是 *消费者* 通过 `Eureka Server` 进行访问的，即 `Eureka Server` 是 *服务提供者* 的统一入口。那么整个应用中存在那么多 *消费者* 需要用户进行调用，这个时候用户该怎样访问这些 *消费者工程* 呢？当然可以像之前那样直接访问这些工程。但这种方式没有统一的消费者工程调用入口，不便于访问与管理，而 Zuul 就是这样的一个对于 *消费者* 的统一入口。
 
-> 如果学过前端的肯定都知道 Router 吧，比如 Flutter 中的路由，Vue，React中的路由，用了 Zuul 你会发现在路由功能方面和前端配置路由基本是一个理。![smile](https://gitee.com/aaronlynn/picture/raw/master/img/1f604.png) 我偶尔撸撸 Flutter。
+> 如果学过前端的肯定都知道 Router 吧，比如 Flutter 中的路由，Vue，React中的路由，用了 Zuul 你会发现在路由功能方面和前端配置路由基本是一个理。![smile](https://cdn.jsdelivr.net/gh/recordnote/cdn/img/1f604.png) 我偶尔撸撸 Flutter。
 
 大家对网关应该很熟吧，简单来讲网关是系统唯一对外的入口，介于客户端与服务器端之间，用于对请求进行**鉴权**、**限流**、 **路由**、**监控**等功能。
 
-![img](https://gitee.com/aaronlynn/picture/raw/master/img/zuul-sj22o93nfdsjkdsf.jpg)
+![img](https://cdn.jsdelivr.net/gh/recordnote/cdn/img/zuul-sj22o93nfdsjkdsf.jpg)
 
 没错，网关有的功能，`Zuul` 基本都有。而 `Zuul` 中最关键的就是 **路由和过滤器** 了，在官方文档中 `Zuul` 的标题就是
 
@@ -329,9 +329,9 @@ public News getHystrixNews(@PathVariable("id") int id) {
 
 比如这个时候我们已经向 `Eureka Server` 注册了两个 `Consumer` 、三个 `Provicer` ，这个时候我们再加个 `Zuul` 网关应该变成这样子了。
 
-![image-20211113132445419](https://gitee.com/aaronlynn/picture/raw/master/img/image-20211113132445419.png)
+![image-20211113132445419](https://cdn.jsdelivr.net/gh/recordnote/cdn/img/image-20211113132445419.png)
 
-emmm，信息量有点大，我来解释一下。关于前面的知识我就不解释了![neutral_face](https://gitee.com/aaronlynn/picture/raw/master/img/1f610.png)。
+emmm，信息量有点大，我来解释一下。关于前面的知识我就不解释了![neutral_face](https://cdn.jsdelivr.net/gh/recordnote/cdn/img/1f610.png)。
 
 首先，`Zuul` 需要向 `Eureka` 进行注册，注册有啥好处呢？
 
@@ -357,7 +357,7 @@ eureka:
       defaultZone: http://localhost:9997/eurekaCopy to clipboardErrorCopied
 ```
 
-然后在启动类上加入 `@EnableZuulProxy` 注解就行了。没错，就是那么简单![smiley](https://gitee.com/aaronlynn/picture/raw/master/img/1f603.png)。
+然后在启动类上加入 `@EnableZuulProxy` 注解就行了。没错，就是那么简单![smiley](https://cdn.jsdelivr.net/gh/recordnote/cdn/img/1f603.png)。
 
 #### 统一前缀
 
@@ -421,7 +421,7 @@ zuul:
 
 在给你们看代码之前我先给你们解释一下关于过滤器的一些注意点。
 
-![img](https://gitee.com/aaronlynn/picture/raw/master/img/zuul-sj22o93nfdsjkdsf2312244.jpg)
+![img](https://cdn.jsdelivr.net/gh/recordnote/cdn/img/zuul-sj22o93nfdsjkdsf2312244.jpg)
 
 过滤器类型：`Pre`、`Routing`、`Post`。前置`Pre`就是在请求之前进行过滤，`Routing`路由过滤器就是我们上面所讲的路由策略，而`Post`后置过滤器就是在 `Response` 之前进行过滤的过滤器。你可以观察上图结合着理解，并且下面我会给出相应的注释。
 
@@ -501,7 +501,7 @@ public class AccessLogFilter extends ZuulFilter {
 
 当然不仅仅是令牌桶限流方式，`Zuul` 只要是限流的活它都能干，这里我只是简单举个![chestnut](https://github.githubassets.com/images/icons/emoji/unicode/1f330.png)。
 
-<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20211113132517376.png" alt="image-20211113132517376" style="zoom:67%;" />
+<img src="https://cdn.jsdelivr.net/gh/recordnote/cdn/img/image-20211113132517376.png" alt="image-20211113132517376" style="zoom:67%;" />
 
 我先来解释一下什么是 **令牌桶限流** 吧。
 
@@ -587,13 +587,13 @@ public class RouteFilter extends ZuulFilter {
 
 你想一下，我们的应用是不是只有启动的时候才会进行配置文件的加载，那么我们的 `Spring Cloud Config` 就暴露出一个接口给启动应用来获取它所想要的配置文件，应用获取到配置文件然后再进行它的初始化工作。就如下图。
 
-![img](https://gitee.com/aaronlynn/picture/raw/master/img/config-ksksks.jpg)
+![img](https://cdn.jsdelivr.net/gh/recordnote/cdn/img/config-ksksks.jpg)
 
 当然这里你肯定还会有一个疑问，如果我在应用运行时去更改远程配置仓库(Git)中的对应配置文件，那么依赖于这个配置文件的已启动的应用会不会进行其相应配置的更改呢？
 
 答案是不会的。
 
-什么？那怎么进行动态修改配置文件呢？这不是出现了 **配置漂移** 吗？你个渣男![rage](https://gitee.com/aaronlynn/picture/raw/master/img/1f621.png)，你又骗我！
+什么？那怎么进行动态修改配置文件呢？这不是出现了 **配置漂移** 吗？你个渣男![rage](https://cdn.jsdelivr.net/gh/recordnote/cdn/img/1f621.png)，你又骗我！
 
 别急嘛，你可以使用 `Webhooks` ，这是 `github` 提供的功能，它能确保远程库的配置文件更新后客户端中的配置信息也得到更新。
 
@@ -601,7 +601,7 @@ public class RouteFilter extends ZuulFilter {
 
 慢着，听我说完，`Webhooks` 虽然能解决，但是你了解一下会发现它根本不适合用于生产环境，所以基本不会使用它的。
 
-![img](https://gitee.com/aaronlynn/picture/raw/master/img/1ada747175704ecba3507074847002d0-new-imagee5249fee-c5ee-4472-9983-f1bd5801387c.png)
+![img](https://cdn.jsdelivr.net/gh/recordnote/cdn/img/1ada747175704ecba3507074847002d0-new-imagee5249fee-c5ee-4472-9983-f1bd5801387c.png)
 
 而一般我们会使用 `Bus` 消息总线 + `Spring Cloud Config` 进行配置的动态刷新。
 
@@ -613,7 +613,7 @@ public class RouteFilter extends ZuulFilter {
 
 而拥有了 `Spring Cloud Bus` 之后，我们只需要创建一个简单的请求，并且加上 `@ResfreshScope` 注解就能进行配置的动态修改了，下面我画了张图供你理解。
 
-![img](https://gitee.com/aaronlynn/picture/raw/master/img/springcloud-bus-s213dsfsd.jpg)
+![img](https://cdn.jsdelivr.net/gh/recordnote/cdn/img/springcloud-bus-s213dsfsd.jpg)
 
 ## 总结
 
