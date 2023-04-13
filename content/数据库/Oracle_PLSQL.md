@@ -6,7 +6,7 @@ author: Aaron
 avatar: /me/yy.jpg
 cover: /img/MySql.png
 images:
-  - 
+  - /img/plsql.png
 categories:
   - 数据库
 tags:
