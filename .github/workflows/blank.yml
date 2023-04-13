@@ -1,27 +1,34 @@
-name: CI #自动化的名称
+name: deploy
+
 on:
-  push: # push的时候触发
-    branches: # 那些分支需要触发
-      - master
+    push:
+    workflow_dispatch:
+    schedule:
+        # Runs everyday at 8:00 AM
+        - cron: "0 0 * * *"
+
 jobs:
-  build:
-    runs-on: ubuntu-latest # 镜像市场
-    steps:
-      - name: checkout # 步骤的名称
-        uses: actions/checkout@v2.3.4 #软件市场的名称
-        with: # 参数
-          submodules: true
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2.4.13
-        with:
-          hugo-version: '0.84.0'
-          extended: true
-      - name: Build
-        run: hugo
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v2.5.1
-        env:
-          ACTIONS_DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
-          EXTERNAL_REPOSITORY: recordnote/recordnote.github.io
-          PUBLISH_BRANCH: main
-          PUBLISH_DIR: ./public
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+              with:
+                  submodules: true
+                  fetch-depth: 0
+
+            - name: Setup Hugo
+              uses: peaceiris/actions-hugo@v2
+              with:
+                  hugo-version: "latest"
+
+            - name: Build Web
+              run: hugo
+
+            - name: Deploy Web
+              uses: peaceiris/actions-gh-pages@v3
+              with:
+                  PERSONAL_TOKEN: ${{ secrets.DEPLOY_KEY }}
+                  EXTERNAL_REPOSITORY: recordnote/recordnote.github.io
+                  PUBLISH_BRANCH: main
+                  PUBLISH_DIR: ./public
