@@ -21,7 +21,7 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v2.5.1
         env:
-          ACTIONS_DEPLOY_KEY: ${{secrets.ACTIONS_DEPLOY_KEY}}
+          ACTIONS_DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
           EXTERNAL_REPOSITORY: recordnote/recordnote.github.io
           PUBLISH_BRANCH: main
           PUBLISH_DIR: ./public
