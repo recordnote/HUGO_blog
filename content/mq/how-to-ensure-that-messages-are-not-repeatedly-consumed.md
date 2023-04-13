@@ -1,7 +1,7 @@
 ---
 title: 如何保证消息不被重复消费？（如何保证消息消费的幂等性）
-date: 2021-01-25T14:21:26+08:00
-lastmod: 2021-01-25T14:21:26+08:00
+date: 2022-01-25T14:21:26+08:00
+lastmod: 2022-01-25T14:21:26+08:00
 author: Aaron
 avatar: /me/yy.jpg
 cover: /img/mq-topic.jpg

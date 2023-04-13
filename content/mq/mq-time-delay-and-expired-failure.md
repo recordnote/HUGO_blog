@@ -1,7 +1,7 @@
 ---
 title: 如何解决消息队列的延时以及过期失效问题？消息队列满了以后该怎么处理？
-date: 2021-01-27T14:21:26+08:00
-lastmod: 2021-01-27T14:21:26+08:00
+date: 2022-01-27T14:21:26+08:00
+lastmod: 2022-01-27T14:21:26+08:00
 author: Aaron
 avatar: /me/yy.jpg
 cover: /img/mq-topic.jpg

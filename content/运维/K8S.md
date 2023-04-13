@@ -1,7 +1,7 @@
 ---
 title: K8s
-date: 2021-03-31T14:21:26+08:00
-lastmod: 2021-03-31T14:21:26+08:00
+date: 2022-03-31T14:21:26+08:00
+lastmod: 2022-03-31T14:21:26+08:00
 author: Aaron
 avatar: /me/yy.jpg
 cover: /img/k8s.png
