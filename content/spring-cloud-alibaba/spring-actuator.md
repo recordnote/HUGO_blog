@@ -4,9 +4,9 @@ date: 2022-12-01T14:21:26+08:00
 lastmod: 2022-12-01T14:21:26+08:00
 author: Aaron
 avatar: /me/yy.jpg
-cover: /img/Understanding-Computation.jpg
+cover: /img/springcloud.jfif
 images:
-  - /img/Understanding-Computation.jpg
+  - /img/springcloud.jfif
 categories:
   - Spring框架
 tags:
