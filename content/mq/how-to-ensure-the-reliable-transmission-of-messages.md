@@ -1,7 +1,7 @@
 ---
 title: 如何保证消息的可靠性传输？（处理消息丢失的问题）
-date: 2021-01-27T14:21:26+08:00
-lastmod: 2021-01-27T14:21:26+08:00
+date: 2022-01-27T14:21:26+08:00
+lastmod: 2022-01-27T14:21:26+08:00
 author: Aaron
 avatar: /me/yy.jpg
 cover: /img/mq-topic.jpg

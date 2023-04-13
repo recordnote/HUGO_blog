@@ -1,7 +1,7 @@
 ---
 title: redis两种持久化方式的优缺点
-date: 2021-07-31T14:21:26+08:00
-lastmod: 2021-05-31T14:21:26+08:00
+date: 2022-07-31T14:21:26+08:00
+lastmod: 2022-07-31T14:21:26+08:00
 author: Aaron
 avatar: /me/yy.jpg
 cover: /img/redis.gif

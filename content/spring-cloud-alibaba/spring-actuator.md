@@ -1,7 +1,7 @@
 ---
 title: Spring Boot Actuator:健康检查、审计、统计和监控
-date: 2020-12-01T14:21:26+08:00
-lastmod: 2020-12-01T14:21:26+08:00
+date: 2022-12-01T14:21:26+08:00
+lastmod: 2022-12-01T14:21:26+08:00
 author: Aaron
 avatar: /me/yy.jpg
 cover: /img/Understanding-Computation.jpg

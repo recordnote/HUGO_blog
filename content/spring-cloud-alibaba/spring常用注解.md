@@ -1,7 +1,7 @@
 ---
 title: spring常用注解
-date: 2020-11-23T14:21:26+08:00
-lastmod: 2020-11-23T14:21:26+08:00
+date: 2022-11-23T14:21:26+08:00
+lastmod: 2022-11-23T14:21:26+08:00
 author: Aaron
 avatar: /me/yy.jpg
 cover: /img/spring.jpg
@@ -464,5 +464,4 @@ Student student;
 而@Bean注解通常是我们在标有该注解的方法中定义产生这个bean的逻辑。
 
 @Component 作用于类，@Bean作用于方法。
-
 

@@ -1,7 +1,7 @@
 ---
 title: JVM 虚拟机
-date: 2021-07-01T14:21:26+08:00
-lastmod: 2021-07-02T14:21:26+08:00
+date: 2022-07-01T14:21:26+08:00
+lastmod: 2022-07-02T14:21:26+08:00
 author: Aaron
 avatar: /me/yy.jpg
 cover: /img/java.png

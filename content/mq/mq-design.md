@@ -1,7 +1,7 @@
 ---
 title: 如果让你写一个消息队列，该如何进行架构设计？
-date: 2021-01-28T14:21:26+08:00
-lastmod: 2021-01-28T14:21:26+08:00
+date: 2022-01-28T14:21:26+08:00
+lastmod: 2022-01-28T14:21:26+08:00
 author: Aaron
 avatar: /me/yy.jpg
 cover: /img/mq-topic.jpg

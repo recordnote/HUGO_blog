@@ -1,7 +1,7 @@
 ---
 title: 如何保证消息队列的高可用？
-date: 2021-01-24T14:21:26+08:00
-lastmod: 2021-01-24T14:21:26+08:00
+date: 2022-01-24T14:21:26+08:00
+lastmod: 2022-01-24T14:21:26+08:00
 author: Aaron
 avatar: /me/yy.jpg
 cover: /img/mq-topic.jpg
