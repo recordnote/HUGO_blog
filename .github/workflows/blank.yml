@@ -17,7 +17,7 @@ jobs:
           hugo-version: '0.84.0'
           extended: true
       - name: Build
-        run: hugo --minify
+        run: hugo
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v2.5.1
         env:
