@@ -1,7 +1,7 @@
 ---
 title: Sentinel（轻量级的流量控制、熔断降级Java库）
-date: 2022-03-01T14:21:26+08:00
-lastmod: 2022-03-01T14:21:26+08:00
+date: 2023-03-08T14:21:26+08:00
+lastmod: 2023-03-08T14:21:26+08:00
 author: Aaron
 avatar: /me/yy.jpg
 cover: /img/2017.jpg
