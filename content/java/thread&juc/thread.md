@@ -138,7 +138,7 @@ y = -1; //语句5
 
 ### 7.3、ReentrantLock优缺点？
 
-<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20211013092741273.png" alt="image-20211013092741273" style="zoom: 80%;" /> 
+ <img src="https://cdn.jsdelivr.net/gh/recordnote/cdn/img/image-20230710171856826.png" style="zoom: 80%;" />
 
 ### 7.4、底层实现？（AQS、CAS） 
 
