@@ -1,7 +1,7 @@
 ---
 title: 分布式ID
-date: 2022-07-31T14:21:26+08:00
-lastmod: 2022-07-31T14:21:26+08:00
+date: 2023-02-04T14:21:26+08:00
+lastmod: 2023-02-04T14:21:26+08:00
 author: Aaron
 avatar: /me/yy.jpg
 cover: /img/java.png
@@ -18,7 +18,7 @@ weight: 1
 
 传统方案在复杂分布式系统中，往往需要对大量的数据和消息进行唯一标识。如在美团点评的金融、支付、餐饮、酒店、猫眼电影等产品。对数据分库分表后需要有一个唯一ID来标识一条数据或消息。
 
- <img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210816230551142.png" alt="image-20210816230551142" style="zoom: 67%;" /> 
+<img src="https://cdn.jsdelivr.net/gh/recordnote/cdn/img/image-20230711144239032.png" alt="image-20230711144239032" style="zoom:50%;" />  
 
 ## 2.一个最基本的分布式 ID 需要满足下面这些要求：
 
@@ -47,9 +47,9 @@ weight: 1
 
   滴滴开源的**Tinyid**就是基于这种方式来做的。不过，TinyId 使用了双号段缓存、增加多 db 支持等方式来进一步优化。
 
-##  3.方案
+## 3.方案
 
-<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210817164217031.png" alt="image-20210817164217031" style="zoom:150%;" />
+![image-20230711144321090](https://cdn.jsdelivr.net/gh/recordnote/cdn/img/image-20230711144321090.png)
 
 ### 自研算法：
 
@@ -57,13 +57,11 @@ weight: 1
 
 ###  号段模式：
 
-<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210816180817685.png" alt="image-20210816180817685" style="zoom: 67%;" /> 
-
-
+<img src="https://cdn.jsdelivr.net/gh/recordnote/cdn/img/image-20230711144414664.png" alt="image-20230711144414664" style="zoom:67%;" /> 
 
 ### 雪花算法：
 
-<img src="https://gitee.com/aaronlynn/picture/raw/master/img/image-20210817194022780.png" alt="image-20210817194022780" style="zoom:50%;" /> 
+<img src="https://cdn.jsdelivr.net/gh/recordnote/cdn/img/image-20230711144445043.png" alt="image-20230711144445043" style="zoom:67%;" /> 
 
 核心思想是： 使用41bit作为毫秒数，10bit作为机器的ID(5ge bit是数据中心，5个bit的机器ID),12bit 作为毫秒数内的流水号，最后一个符号位，永远是0.
 
@@ -71,14 +69,14 @@ weight: 1
 
 工作进程位（类似服务器序号）：
 
-![image-20210816181332820](https://gitee.com/aaronlynn/picture/raw/master/img/image-20210816181332820.png)   
+<img src="https://cdn.jsdelivr.net/gh/recordnote/cdn/img/image-20230711144527590.png" alt="image-20230711144527590" style="zoom:50%;" />    
 
 常见的开源组件：
 
-![image-20210816183714043](https://gitee.com/aaronlynn/picture/raw/master/img/image-20210816183714043.png) 
+<img src="https://cdn.jsdelivr.net/gh/recordnote/cdn/img/image-20230711144556996.png" alt="image-20230711144556996" style="zoom:67%;" /> 
 
-![image-20210816184115465](https://gitee.com/aaronlynn/picture/raw/master/img/image-20210816184115465.png) 
+<img src="https://cdn.jsdelivr.net/gh/recordnote/cdn/img/image-20230711144641923.png" alt="image-20230711144641923" style="zoom:67%;" /> 
 
-![image-20210816221514591](https://gitee.com/aaronlynn/picture/raw/master/img/image-20210816221514591.png)
+<img src="https://cdn.jsdelivr.net/gh/recordnote/cdn/img/image-20230711144710698.png" alt="image-20230711144710698" style="zoom:67%;" /> 
 
 ps：雪花算法会跟机器标识做绑定，尤其是服务器IP，需要唯一
