@@ -1,8 +1,8 @@
 ---
 title: Spring Boot Actuator:健康检查、审计、统计和监控
-date: 2023-07-01T14:21:26+08:00
-lastmod: 2023-07-01T14:21:26+08:00
-author: Aaron
+date: 2023-08-20T14:21:26+08:00
+lastmod: 2023-08-20T14:21:26+08:00
+author: Lin
 avatar: /me/yy.jpg
 cover: /img/springcloud.jfif
 images:

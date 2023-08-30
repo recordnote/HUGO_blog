@@ -1,8 +1,8 @@
 ---
 title: Spring Cloud 总结
-date: 2023-06-25T14:21:26+08:00
-lastmod: 2023-06-25T14:21:26+08:00
-author: Aaron
+date: 2023-07-25T14:21:26+08:00
+lastmod: 2023-07-25T14:21:26+08:00
+author: Lin
 avatar: /me/yy.jpg
 cover: /img/springcloud.jfif
 images:
