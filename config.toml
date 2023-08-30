@@ -74,7 +74,7 @@ hasCJKLanguage = true
   favicon = "/favicon.png"
 
   highlightjs = true
-  highlightjsCDN = "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js"
+  # highlightjsCDN = "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js"
   highlightjsExtraLanguages = ["clojure", "ocaml"]
   highlightjsTheme = "tomorrow"
   highlightjsThemeDark = "tomorrow-night"
