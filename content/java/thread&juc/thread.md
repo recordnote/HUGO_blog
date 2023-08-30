@@ -1,8 +1,8 @@
 ---
 title: 多线程
-date: 2023-05-01T14:21:26+08:00
-lastmod: 2023-05-01T14:21:26+08:00
-author: Aaron
+date: 2023-06-01T14:21:26+08:00
+lastmod: 2023-06-01T14:21:26+08:00
+author: Lin
 avatar: /me/yy.jpg
 cover: /img/java.png
 images:
