@@ -1,8 +1,8 @@
 ---
 title: jdk8新特性-Stream常用方法和特性
-date: 2023-06-28T14:21:26+08:00
-lastmod: 2023-06-28T14:21:26+08:00
-author: Aaron
+date: 2023-08-08T14:21:26+08:00
+lastmod: 2023-08-08T14:21:26+08:00
+author: Lin
 avatar: /me/yy.jpg
 cover: /img/java.png
 images:
