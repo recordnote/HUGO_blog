@@ -1,7 +1,7 @@
 ---
 title: Spring Cloud 总结
-date: 2023-08-25T14:21:26+08:00
-lastmod: 2023-08-25T14:21:26+08:00
+date: 2023-09-25T14:21:26+08:00
+lastmod: 2023-09-25T14:21:26+08:00
 author: Lin
 avatar: /me/yy.jpg
 cover: /img/springcloud.jfif
@@ -14,7 +14,7 @@ tags:
 weight: 1
 ---
 
-首先我给大家看一张图，如果大家对这张图有些地方不太理解的话，我希望你们看完我这篇文章会恍然大悟。
+首先看一张图 。
 
 ![image-20211113131845319](https://cdn.jsdelivr.net/gh/recordnote/cdn/img/image-20211113131845319.png)
 
