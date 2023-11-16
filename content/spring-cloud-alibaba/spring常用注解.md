@@ -1,7 +1,7 @@
 ---
 title: spring常用注解
-date: 2023-06-28T14:21:26+08:00
-lastmod: 2023-06-28T14:21:26+08:00
+date: 2023-07-28T14:21:26+08:00
+lastmod: 2023-07-28T14:21:26+08:00
 author: Lin
 avatar: /me/yy.jpg
 cover: /img/spring.jpg

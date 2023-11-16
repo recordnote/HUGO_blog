@@ -1,7 +1,7 @@
 ---
 title: Java代理模式详解
-date: 2023-08-01T14:21:26+08:00
-lastmod: 2023-08-01T14:21:26+08:00
+date: 2023-09-01T14:21:26+08:00
+lastmod: 2023-09-01T14:21:26+08:00
 author: Lin
 avatar: /me/yy.jpg
 cover: /img/java.png
