@@ -2,7 +2,7 @@
 title: MyBatis相关
 date: 2022-06-31T14:21:26+08:00
 lastmod: 2022-06-31T14:21:26+08:00
-author: Aaron
+author: Lin
 avatar: /me/yy.jpg
 cover: /img/MySql.png
 images:

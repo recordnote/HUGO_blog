@@ -2,7 +2,7 @@
 title: 分布式ID
 date: 2023-02-04T14:21:26+08:00
 lastmod: 2023-02-04T14:21:26+08:00
-author: Aaron
+author: Lin
 avatar: /me/yy.jpg
 cover: /img/java.png
 images:
