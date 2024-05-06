@@ -1,5 +1,6 @@
 baseURL = "https://recordnote.github.io"
-languageCode = "zh-Hans"
+#languageCode = "zh-Hans"
+languageCode = "en-us"
 defaultContentLanguage = "zh"
 title = "Lin 的博客"
 theme = "dream"
