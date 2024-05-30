@@ -53,8 +53,6 @@ weight: 1
 </html>
 ```
 
-复制代码
-
 现在。这个叫[vue单文件组件规范sfc](https://cn.vuejs.org/v2/guide/single-file-components.html)
 
 ```html
@@ -75,8 +73,6 @@ weight: 1
 </style>
 ```
 
-复制代码
-
 ### 外部文件引用方式变化
 
 以前通过script src、link href引入外部的js和css；
@@ -89,8 +85,6 @@ weight: 1
 <script src="js/jquery-1.10.2.js" type="text/javascript"></script>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
 ```
-
-复制代码
 
 现在
 
@@ -105,8 +99,6 @@ var formatedPlayTime = util.formatTime(playTime); //调用js模块的方法
 </script>
 ```
 
-复制代码
-
 而在这个`util.js`里，要把之前的function封装为对象的方法
 
 ```js
@@ -119,16 +111,12 @@ module.exports = {
 }
 ```
 
-复制代码
-
 当然还有一些高级的用法
 
 ```text
 var dateUtils = require('../../../common/util.js').dateUtils; //直接使用js模块的属性。在hello uni-app有示例
 import * as echarts from '/components/echarts/echarts.simple.min.js'; //将js导入并重命名为echarts，然后使用echarts.来继续执行方法。在hello uni-app有示例
 ```
-
-复制代码
 
 #### css外部文件导入
 
@@ -141,8 +129,6 @@ import * as echarts from '/components/echarts/echarts.simple.min.js'; //将js导
 	}
 </style>
 ```
-
-复制代码
 
 全局样式，在根目录下的app.vue里写入，每个页面都会加载app.vue里的样式。
 
@@ -171,17 +157,13 @@ import * as echarts from '/components/echarts/echarts.simple.min.js'; //将js导
 </script>
 ```
 
-复制代码
-
 如需要全局导入vue组件，即每个页面都可以直接使用而不用引用和注册的话，在项目根目录下的main.js里处理。如下是hello uni-app里的例子。
 
-```text
+```js
 //main.js
 import pageHead from './components/page-head.vue' //导入
 Vue.component('page-head', pageHead) //注册。注册后在每个vue的page页面里可以直接使用<page-head></page-head>组件。
 ```
-
-复制代码
 
 上述的组件使用方式属于传统vue的概念。uni-app 2.7以后推出了更简单的组件使用技术[easycom](https://uniapp.dcloud.net.cn/collocation/pages?id=easycom)，无需引用和注册组件，直接在template区域使用组件即可。
 
@@ -281,8 +263,6 @@ uni-app使用vue的数据绑定方式解决js和dom界面交互的问题。
 </html>
 ```
 
-复制代码
-
 现在的做法，是vue的绑定模式，给这个dom元素绑定一个js变量，在script中修改js变量的值，dom会自动变化，页面会自动更新渲染
 
 ```html
@@ -312,8 +292,6 @@ uni-app使用vue的数据绑定方式解决js和dom界面交互的问题。
 	}
 </script>
 ```
-
-复制代码
 
 注意上述代码中的 `export default {}` 里的 `data(): {return { }}`。 在vue的设计中，这里存放着页面中需要绑定的数据，写在data里，才能被界面正确的绑定和渲染。 注意：uni-app的vue页面是vue的单文件组件规范，按照vue的定义只接受 function，必须用 return 包起来。
 
@@ -350,8 +328,6 @@ export default {
 </script>
 ```
 
-复制代码
-
 - **js api的变化**
 
 因为uni-app的api是参考小程序的，所以和浏览器的js api有很多不同，如
@@ -375,8 +351,6 @@ page{
 	
 }
 ```
-
-复制代码
 
 单位方面，px无法动态适应不同宽度的屏幕，rem无法用于nvue/weex。如果想使用根据屏幕宽度自适应的单位，推荐使用rpx，全端支持。 [尺寸单位文档](https://uniapp.dcloud.io/frame?id=尺寸单位)
 
