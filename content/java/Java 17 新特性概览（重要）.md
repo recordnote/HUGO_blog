@@ -1,7 +1,7 @@
 ---
 title: Java 17 新特性概览（重要）
-date: 2024-06-20T14:21:26+08:00
-lastmod: 2024-06-20T14:21:26+08:00
+date: 2025-02-20T14:21:26+08:00
+lastmod: 2025-02-20T14:21:26+08:00
 author: Lin
 avatar: /me/yy.jpg
 cover: /img/java.png

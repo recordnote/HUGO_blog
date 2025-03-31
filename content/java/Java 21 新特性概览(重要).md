@@ -1,7 +1,7 @@
 ---
 title: Java 21 新特性概览(重要)
-date: 2024-07-15T14:21:26+08:00
-lastmod: 2024-07-16T14:21:26+08:00
+date: 2025-03-15T14:21:26+08:00
+lastmod: 2025-03-16T14:21:26+08:00
 author: Lin
 avatar: /me/yy.jpg
 cover: /img/java.png
