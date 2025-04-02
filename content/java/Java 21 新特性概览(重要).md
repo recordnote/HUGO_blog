@@ -1,5 +1,5 @@
 ---
-title: Java 21 新特性概览(重要)
+title: Java 21 新特性概览
 date: 2025-03-15T14:21:26+08:00
 lastmod: 2025-03-16T14:21:26+08:00
 author: Lin
