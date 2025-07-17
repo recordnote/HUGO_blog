@@ -266,7 +266,7 @@ logging:
 
 MCP Client 注入
 
-```
+```java
 @Autowiredprivate List<LoadbalancedMcpSyncClient> mcpClients;  // For sync client
 // OR
 @Autowiredprivate List<LoadbalancedMcpAsyncClient> mcpClients;  // For async client
@@ -274,7 +274,7 @@ MCP Client 注入
 
 ToolCallbackProvider 注入
 
-```
+```java
 # sync类型，Bean名称为"loadbalancedSyncMcpToolCallbacks"@Autowiredprivate LoadbalancedSyncMcpToolCallbackProvider toolCallbackProvider;ToolCallback[] toolCallbacks = toolCallbackProvider.getToolCallbacks();
 // OR
 # Async类型，Bean名称为"loadbalancedMcpAsyncToolCallbacks"@Autowiredprivate LoadbalancedAsyncMcpToolCallbackProvider toolCallbackProvider;ToolCallback[] toolCallbacks = toolCallbackProvider.getToolCallbacks();
@@ -296,3 +296,6 @@ Spring AI Alibaba MCP 联合 Nacos，解决了企业级 AI Agent 的应用与落
 
 1. 查看完整示例源码：[spring-ai-alibaba-mcp-example](https://github.com/springaialibaba/spring-ai-alibaba-examples/tree/main/spring-ai-alibaba-mcp-example)
 2. Github 项目仓库：https://github.com/alibaba/spring-ai-alibaba
+
+
+
