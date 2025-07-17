@@ -27,18 +27,18 @@ hasCJKLanguage = true
 
 [params]
   background = "#fff"
-  backgroundImage = "/me/background.jpg"
+  backgroundImage = "/me/background1.jpg"
   linkColor = "seagreen"
 
   # dark mode
   # defaultDark = true
   backgroundDark = "#333"
-  backgroundImageDark = "/me/background.jpg"
+  backgroundImageDark = "/me/background1.jpg"
   darkLinkColor = "darkseagreen"
   # darkNav = true
   # dark404 = true
 
-  images = ["me/background.jpg"]
+  images = ["me/background1.jpg"]
 
   author = "Lin"
   description = "Lin 的生活记录～"
