@@ -1,17 +1,17 @@
 ---
 title: Spring Cloud Gateway常见问题总结
-date: 2025-08-19T14:21:26+08:00
-lastmod: 2025-08-19T14:21:26+08:00
+date: 2025-08-02T14:21:26+08:00
+lastmod: 2025-08-02T14:21:26+08:00
 author: Lin
 avatar: /me/yy.jpg
 cover: /img/scg.png
 images:
   - /img/scg.png
 categories:
-  - 架构
-  - 实战项目
+  - 架构设计
 tags:
-  - 微服务
+  - 架构设计
+weight: 1
 ---
 
 ## [什么是 Spring Cloud Gateway？](#什么是-spring-cloud-gateway)
