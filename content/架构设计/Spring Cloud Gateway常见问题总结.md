@@ -1,7 +1,7 @@
 ---
 title: Spring Cloud Gateway常见问题总结
-date: 2025-08-02T14:21:26+08:00
-lastmod: 2025-08-02T14:21:26+08:00
+date: 2025-08-19T14:21:26+08:00
+lastmod: 2025-08-19T14:21:26+08:00
 author: Lin
 avatar: /me/yy.jpg
 cover: /img/scg.png
@@ -18,7 +18,7 @@ weight: 1
 
 Spring Cloud Gateway 属于 Spring Cloud 生态系统中的网关，其诞生的目标是为了替代老牌网关 **Zuul**。准确点来说，应该是 Zuul 1.x。Spring Cloud Gateway 起步要比 Zuul 2.x 更早。
 
-为了提升网关的性能，Spring Cloud Gateway 基于 Spring WebFlux 。Spring WebFlux 使用 Reactor 库来实现响应式编程模型，底层基于 Netty 实现同步非阻塞的 I/O。
+为了提升网关的性能，Spring Cloud Gateway 基于 Spring WebFlux 。Spring WebFlux 使用 Reactor 库来实现响应式编程模型，底层基于 Netty 实现同步非阻塞的 I/O。 
 
 ![springcloud-gateway- demo](https://raw.githubusercontent.com/recordnote/cdn/main/img/springcloud-gateway-%20demo.png)
 
