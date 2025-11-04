@@ -1,7 +1,7 @@
 ---
 title: Spring Cloud Gateway常见问题总结
-date: 2025-08-19T14:21:26+08:00
-lastmod: 2025-08-19T14:21:26+08:00
+date: 2025-10-19T14:21:26+08:00
+lastmod: 2025-10-19T14:21:26+08:00
 author: Lin
 avatar: /me/yy.jpg
 cover: /img/scg.png
