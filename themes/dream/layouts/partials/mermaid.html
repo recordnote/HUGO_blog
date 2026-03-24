@@ -1,0 +1,33 @@
+<script>
+  document.addEventListener('DOMContentLoaded', async function () {
+    if (!window.__dreamMermaid) return
+
+    var blocks = document.querySelectorAll('pre code.language-mermaid, pre code.lang-mermaid')
+    if (!blocks.length) return
+
+    blocks.forEach(function (block, index) {
+      var pre = block.parentElement
+      if (!pre || !pre.parentElement) return
+
+      var wrapper = document.createElement('div')
+      wrapper.className = 'mermaid'
+      wrapper.textContent = block.textContent
+      wrapper.setAttribute('data-mermaid-id', 'mermaid-' + index)
+      pre.parentElement.replaceChild(wrapper, pre)
+    })
+
+    var isDark = localStore.getItem('hugo-theme-dream-is-dark')
+    isDark = isDark ? isDark : window.defaultDark ? 'y' : isDark
+
+    window.__dreamMermaid.initialize({
+      startOnLoad: false,
+      theme: isDark === 'y' ? 'dark' : 'default',
+      securityLevel: 'loose',
+      flowchart: { curve: 'basis' }
+    })
+
+    await window.__dreamMermaid.run({
+      querySelector: '.mermaid'
+    })
+  })
+</script>
