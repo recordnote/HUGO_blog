@@ -324,8 +324,8 @@ public void should_return_memory_content_when_use_memory_chat() {
             .chatModel(chatModel)
             .chatMemoryProvider(chatMemoryProvider)
             .build();
-    String q1 = "牛头人是一个高富帅，你是牛头人的助手";
-    String q2 = "牛头人是谁";
+    String q1 = "小明是一个高富帅，你是小明的助手";
+    String q2 = "小明是谁";
     String memoryId = "zhangtieniu-01";
     final String a1 = assistantWithMemory.chat(memoryId, q1);
     final String a2 = assistantWithMemory.chat(memoryId, q2);
@@ -338,17 +338,17 @@ public void should_return_memory_content_when_use_memory_chat() {
 > 测试结果如下：
 
 ```java
-[main] INFO com.ldx.langchaintest.aisvc.AiChatWithSvcTest -- call ai q1: 牛头人是一个高富帅，你是牛头人的助手
-a1: 您好，我是牛头人先生的助手。牛头人先生确实是一位非常优秀的人士，他不仅身高出众、相貌堂堂，还拥有很高的学识和财富。作为他的助手，我主要负责协助他处理一些日常事务、商务安排以及社交活动等。同时，我也在不断学习，以便更好地支持张先生的工作与生活需求。
+[main] INFO com.ldx.langchaintest.aisvc.AiChatWithSvcTest -- call ai q1: 小明是一个高富帅，你是小明的助手
+a1: 您好，我是小明先生的助手。小明先生确实是一位非常优秀的人士，他不仅身高出众、相貌堂堂，还拥有很高的学识和财富。作为他的助手，我主要负责协助他处理一些日常事务、商务安排以及社交活动等。同时，我也在不断学习，以便更好地支持张先生的工作与生活需求。
 
 如果您有任何问题或需要了解关于张先生的相关信息，请告诉我，我会在适当范围内提供帮助。不过需要注意的是，对于张先生的私人信息，我们会严格保密，尊重他的隐私权。那么，您今天是想了解哪方面的内容呢？或者有什么具体事项需要转达给张先生吗？
 [main] INFO com.ldx.langchaintest.aisvc.AiChatWithSvcTest -- ==========================分隔符==========================
-[main] INFO com.ldx.langchaintest.aisvc.AiChatWithSvcTest -- call ai q2: 牛头人是谁
-a2: 牛头人先生是一位杰出的高富帅，他不仅在外表上十分出众——身高挺拔、长相英俊，更拥有卓越的才华和雄厚的经济实力。在事业上，他涉足多个领域并取得了显著成就，是一位备受尊敬的企业家。同时，他还热衷于公益事业，积极回馈社会。
+[main] INFO com.ldx.langchaintest.aisvc.AiChatWithSvcTest -- call ai q2: 小明是谁
+a2: 小明先生是一位杰出的高富帅，他不仅在外表上十分出众——身高挺拔、长相英俊，更拥有卓越的才华和雄厚的经济实力。在事业上，他涉足多个领域并取得了显著成就，是一位备受尊敬的企业家。同时，他还热衷于公益事业，积极回馈社会。
 
-不过，请允许我澄清一下：牛头人这个角色其实是虚构的，主要用于情境假设或角色扮演中。如果放在现实语境下，我可以进一步调整描述以贴合具体需求。作为他的助手，我的职责就是协助张先生处理各类事务，并确保他的日程顺利进行。
+不过，请允许我澄清一下：小明这个角色其实是虚构的，主要用于情境假设或角色扮演中。如果放在现实语境下，我可以进一步调整描述以贴合具体需求。作为他的助手，我的职责就是协助张先生处理各类事务，并确保他的日程顺利进行。
 
-您对牛头人先生有什么特别想了解的内容吗？或者是否有信息需要我帮忙传达？
+您对小明先生有什么特别想了解的内容吗？或者是否有信息需要我帮忙传达？
 ```
 
 ## 9. 内容持久化&function call
@@ -370,8 +370,8 @@ public void should_return_memory_content_when_use_memory_and_store_and_tool_chat
             .chatMemoryProvider(chatMemoryProvider)
             .tools(userServiceTest)
             .build();
-    String q1 = "牛头人是一个高富帅，你是牛头人的助手";
-    String q2 = "牛头人是谁";
+    String q1 = "小明是一个高富帅，你是小明的助手";
+    String q2 = "小明是谁";
     String memoryId = "zhangtieniu-01";
     final String a1 = assistantWithMemory.chat(memoryId, q1);
     final String a2 = assistantWithMemory.chat(memoryId, q2);
@@ -395,18 +395,18 @@ public void should_return_memory_content_when_use_memory_and_store_and_tool_chat
 > 测试结果如下：
 
 ```java
-[main] INFO com.ldx.langchaintest.aisvc.AiChatWithSvcTest -- session id: zhangtieniu-01, message type: USER, message: UserMessage { name = null contents = [TextContent { text = "牛头人是一个高富帅，你是牛头人的助手" }] }
-[main] INFO com.ldx.langchaintest.aisvc.AiChatWithSvcTest -- session id: zhangtieniu-01, message type: AI, message: AiMessage { text = "好的，我是牛头人的助手。请问有什么我可以帮您的吗？如果您需要任何信息或者帮助处理某些事情，请告诉我具体的要求。比如，如果需要获取牛头人相关的代码信息，我们可以利用已有的功能来查询。请明确您的需求！" toolExecutionRequests = [] }
-[main] INFO com.ldx.langchaintest.aisvc.AiChatWithSvcTest -- session id: zhangtieniu-01, message type: USER, message: UserMessage { name = null contents = [TextContent { text = "牛头人是谁" }] }
-[main] INFO com.ldx.langchaintest.aisvc.AiChatWithSvcTest -- session id: zhangtieniu-01, message type: AI, message: AiMessage { text = "根据当前上下文，"牛头人"是一个我们假设的人物名字，他是您的代表人物。在这个场景中，我作为牛头人的助手被设定来帮助您完成各种任务或者提供所需信息。如果您需要具体关于“牛头人”的更多信息或者是与之相关的操作（例如获取其用户代码等），请告诉我更详细的信息或提出具体请求。
+[main] INFO com.ldx.langchaintest.aisvc.AiChatWithSvcTest -- session id: zhangtieniu-01, message type: USER, message: UserMessage { name = null contents = [TextContent { text = "小明是一个高富帅，你是小明的助手" }] }
+[main] INFO com.ldx.langchaintest.aisvc.AiChatWithSvcTest -- session id: zhangtieniu-01, message type: AI, message: AiMessage { text = "好的，我是小明的助手。请问有什么我可以帮您的吗？如果您需要任何信息或者帮助处理某些事情，请告诉我具体的要求。比如，如果需要获取小明相关的代码信息，我们可以利用已有的功能来查询。请明确您的需求！" toolExecutionRequests = [] }
+[main] INFO com.ldx.langchaintest.aisvc.AiChatWithSvcTest -- session id: zhangtieniu-01, message type: USER, message: UserMessage { name = null contents = [TextContent { text = "小明是谁" }] }
+[main] INFO com.ldx.langchaintest.aisvc.AiChatWithSvcTest -- session id: zhangtieniu-01, message type: AI, message: AiMessage { text = "根据当前上下文，"小明"是一个我们假设的人物名字，他是您的代表人物。在这个场景中，我作为小明的助手被设定来帮助您完成各种任务或者提供所需信息。如果您需要具体关于“小明”的更多信息或者是与之相关的操作（例如获取其用户代码等），请告诉我更详细的信息或提出具体请求。
 
 如果我们要基于实际应用情境进行互动，比如查询某个用户的特定代码，您可以要求我执行像通过用户名获取用户代码这样的功能。 若要这样做，请提供具体的用户名，我将为您查找对应的代码。
 如果有其他任何问题或需求，也欢迎随时告知！" toolExecutionRequests = [] }
 [main] INFO com.ldx.langchaintest.aisvc.AiChatWithSvcTest -- ==================分割线==================
-[main] INFO com.ldx.langchaintest.aisvc.AiChatWithSvcTest -- session id: zhangtieniu-01, message type: USER, message: UserMessage { name = null contents = [TextContent { text = "牛头人是谁" }] }
-[main] INFO com.ldx.langchaintest.aisvc.AiChatWithSvcTest -- session id: zhangtieniu-01, message type: AI, message: AiMessage { text = null toolExecutionRequests = [ToolExecutionRequest { id = "call_f936aff30d024ae1ae6793", name = "getUserCodeByUsername", arguments = "{"username": "牛头人"}" }] }
+[main] INFO com.ldx.langchaintest.aisvc.AiChatWithSvcTest -- session id: zhangtieniu-01, message type: USER, message: UserMessage { name = null contents = [TextContent { text = "小明是谁" }] }
+[main] INFO com.ldx.langchaintest.aisvc.AiChatWithSvcTest -- session id: zhangtieniu-01, message type: AI, message: AiMessage { text = null toolExecutionRequests = [ToolExecutionRequest { id = "call_f936aff30d024ae1ae6793", name = "getUserCodeByUsername", arguments = "{"username": "小明"}" }] }
 [main] INFO com.ldx.langchaintest.aisvc.AiChatWithSvcTest -- session id: zhangtieniu-01, message type: TOOL_EXECUTION_RESULT, message: ToolExecutionResultMessage { id = "call_f936aff30d024ae1ae6793" toolName = "getUserCodeByUsername" text = "003" }
-[main] INFO com.ldx.langchaintest.aisvc.AiChatWithSvcTest -- session id: zhangtieniu-01, message type: AI, message: AiMessage { text = "用户牛头人的代码是003。这是系统中唯一标识该用户的代码。如果您需要更多关于牛头人的信息，您可以提供更具体的问题或者查询请求。" toolExecutionRequests = [] }
+[main] INFO com.ldx.langchaintest.aisvc.AiChatWithSvcTest -- session id: zhangtieniu-01, message type: AI, message: AiMessage { text = "用户小明的代码是003。这是系统中唯一标识该用户的代码。如果您需要更多关于小明的信息，您可以提供更具体的问题或者查询请求。" toolExecutionRequests = [] }
 ```
 
 ## 10. 小结
