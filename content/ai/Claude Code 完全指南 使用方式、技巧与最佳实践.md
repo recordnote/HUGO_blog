@@ -4,10 +4,9 @@ date: 2026-01-28T14:21:26+08:00
 lastmod: 2026-01-28T14:21:26+08:00
 author: Lin
 avatar: /me/yy.jpg
-cover: /img/ai6.png
+cover: /img/claudecode.png
 images:
-  - /img/ai6.png 
-nocover: true
+  - /img/claudecode.png
 categories:
   - AI
 tags:
