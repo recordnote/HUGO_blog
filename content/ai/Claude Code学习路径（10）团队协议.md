@@ -41,15 +41,34 @@ pending -> approved
 pending -> rejected
 ```
 
-### 请求-响应图
+### 本节架构图
 
 ```mermaid
-sequenceDiagram
-    participant Lead as lead
-    participant Member as teammate
-    Lead->>Member: request(request_id)
-    Member-->>Lead: response(request_id, approve/reject)
-    Lead->>Lead: 更新状态 pending -> approved/rejected
+flowchart TB
+    subgraph L1["发起层"]
+        Lead[主控 Agent]
+        Member[团队成员]
+    end
+
+    subgraph L2["协议层"]
+        Req[request_id]
+        State[状态机 pending / approved / rejected]
+    end
+
+    subgraph L3["通信层"]
+        Bus[消息总线]
+    end
+
+    subgraph L4["治理层"]
+        Ack[审批结果 / 关机结果]
+    end
+
+    Lead --> Req
+    Member --> Req
+    Req --> Bus
+    Bus --> State
+    State --> Ack
+    Ack --> Lead
 ```
 
 ## 3、关机请求
@@ -200,6 +219,3 @@ demo-s10/
 
 从此之后，Agent 之间的关键协商不再是自由文本，而是可跟踪、可关联、可审批的协议流。
 
-## 10、原文链接
-
-- https://learn.shareai.run/zh/s10/

@@ -31,15 +31,35 @@ weight: 1
 父Agent <--摘要结果-- 子Agent
 ```
 
-### 架构图
+### 本节架构图
 
 ```mermaid
-flowchart LR
-    P[父 Agent] -->|task prompt| C[子 Agent]
-    C --> CT[子 Agent 工具调用]
+flowchart TB
+    subgraph L1["协调层"]
+        P[父 Agent]
+        PM[主上下文保持精简]
+    end
+
+    subgraph L2["拆解层"]
+        Dispatch[task 工具派发子任务]
+    end
+
+    subgraph L3["执行层"]
+        C[子 Agent]
+        CT[局部探索与工具调用]
+    end
+
+    subgraph L4["回传层"]
+        S[摘要结论]
+    end
+
+    P --> Dispatch
+    Dispatch --> C
+    C --> CT
     CT --> C
-    C -->|摘要结果| P
-    P --> PM[主上下文保持简洁]
+    C --> S
+    S --> P
+    P --> PM
 ```
 
 关键点在于子 Agent 用的是一套全新的消息历史，干完之后整个过程被丢弃，只把最终摘要返回给父 Agent。
@@ -188,6 +208,3 @@ demo-s04/
 
 把复杂问题拆成干净的子任务，并且只把结果摘要带回主流程，这一步会显著提升长期对话里的上下文质量。
 
-## 9、原文链接
-
-- https://learn.shareai.run/zh/s04/

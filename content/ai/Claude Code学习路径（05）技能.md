@@ -39,15 +39,35 @@ Layer 1: system prompt 中放技能目录
 Layer 2: tool_result 中注入某个技能全文
 ```
 
-### 两层加载图
+### 本节架构图
 
 ```mermaid
-flowchart TD
-    A[Agent 启动] --> P[系统提示词]
-    P --> D[技能目录简介]
-    L[LLM 判断需要额外知识] --> T[load_skill 工具]
-    T --> S[读取 SKILL.md]
-    S --> C[技能完整正文]
+flowchart TB
+    subgraph L1["启动层"]
+        A[Agent 启动]
+    end
+
+    subgraph L2["提示层"]
+        P[系统提示词]
+        D[技能目录摘要]
+    end
+
+    subgraph L3["决策层"]
+        L[模型判断是否需要额外知识]
+        T[load_skill]
+    end
+
+    subgraph L4["知识层"]
+        S[读取 SKILL.md]
+        C[注入完整技能说明]
+    end
+
+    A --> P
+    P --> D
+    D --> L
+    L --> T
+    T --> S
+    S --> C
     C --> L
 ```
 
@@ -204,6 +224,3 @@ demo-s05/
 
 从此之后，Agent 的知识不再是一次性灌进去的，而是可以按任务场景逐步加载。
 
-## 10、原文链接
-
-- https://learn.shareai.run/zh/s05/

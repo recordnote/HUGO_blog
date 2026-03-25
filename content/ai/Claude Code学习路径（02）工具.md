@@ -38,17 +38,37 @@ weight: 1
 用户 -> LLM -> Tool Dispatch Map -> 对应处理函数
 ```
 
-### 架构图
+### 本节架构图
 
 ```mermaid
-flowchart TD
-    U[用户请求] --> L[LLM]
-    L --> D[工具分发表 Dispatch Map]
-    D --> B[bash]
-    D --> R[read_file]
-    D --> W[write_file]
-    D --> E[edit_file]
-    R --> S[路径沙箱 safe_path]
+flowchart TB
+    subgraph L1["交互层"]
+        U[用户任务]
+    end
+
+    subgraph L2["控制层"]
+        L[模型决策]
+        D[工具分发表]
+    end
+
+    subgraph L3["执行层"]
+        B[命令执行 bash]
+        R[文件读取 read_file]
+        W[文件写入 write_file]
+        E[文本编辑 edit_file]
+    end
+
+    subgraph L4["安全层"]
+        S[工作区沙箱]
+    end
+
+    U --> L
+    L --> D
+    D --> B
+    D --> R
+    D --> W
+    D --> E
+    R --> S
     W --> S
     E --> S
 ```
@@ -202,6 +222,3 @@ demo-s02/
 
 从单一 `bash` 到分发表 + 专用工具，意味着 Agent 开始具备更清晰的执行边界，也为后续能力扩展留出了稳定接口。
 
-## 10、原文链接
-
-- https://learn.shareai.run/zh/s02/

@@ -34,16 +34,37 @@ Agent 的循环被分成两个阶段：
 - 自己的收件箱
 - 任务板中的可认领任务
 
-### 自组织状态图
+### 本节架构图
 
 ```mermaid
-stateDiagram-v2
-    [*] --> WORK
-    WORK --> IDLE: 当前步骤完成 / 请求空闲
-    IDLE --> WORK: 收到消息
-    IDLE --> WORK: 自动认领新任务
-    IDLE --> SHUTDOWN: 超时无任务
-    SHUTDOWN --> [*]
+flowchart TB
+    subgraph L1["运行层"]
+        WORK[WORK 阶段]
+        IDLE[IDLE 阶段]
+    end
+
+    subgraph L2["感知层"]
+        Inbox[扫描收件箱]
+        Board[扫描任务板]
+    end
+
+    subgraph L3["协调层"]
+        Claim[自动认领任务]
+        Resume[恢复执行]
+    end
+
+    subgraph L4["状态层"]
+        Shutdown[超时退出]
+    end
+
+    WORK --> IDLE
+    IDLE --> Inbox
+    IDLE --> Board
+    Inbox --> Resume
+    Board --> Claim
+    Claim --> Resume
+    Resume --> WORK
+    IDLE --> Shutdown
 ```
 
 ## 3、WORK / IDLE 双阶段
@@ -211,6 +232,3 @@ demo-s11/
 
 队友不再只是被动等待指令，而是能够在空闲时主动查看任务板、认领任务、恢复工作。到这里，多 Agent 协作已经开始具备自治特征。
 
-## 9、原文链接
-
-- https://learn.shareai.run/zh/s11/

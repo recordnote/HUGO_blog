@@ -32,16 +32,34 @@ weight: 1
 用户输入 -> LLM -> 工具执行 -> 工具结果回传 -> LLM继续判断
 ```
 
-### 流程图
+### 本节架构图
 
 ```mermaid
-flowchart LR
-    U[用户请求] --> M[消息历史 messages]
-    M --> L[LLM]
-    L -->|stop_reason = tool_use| T[执行工具]
-    T --> R[tool_result]
+flowchart TB
+    subgraph L1["交互层"]
+        U[用户目标]
+    end
+
+    subgraph L2["控制层"]
+        M[消息状态流]
+        L[模型推理]
+    end
+
+    subgraph L3["执行层"]
+        T[工具执行层]
+        R[结果回填 tool_result]
+    end
+
+    subgraph L4["输出层"]
+        A[最终输出]
+    end
+
+    U --> M
+    M --> L
+    L -->|请求工具| T
+    T --> R
     R --> M
-    L -->|非 tool_use| A[输出最终答案]
+    L -->|直接回答| A
 ```
 
 只要模型的 `stop_reason` 仍然是 `tool_use`，循环就继续；一旦模型不再请求工具，本轮任务结束。
@@ -210,6 +228,3 @@ demo-s01/
 
 从代码量上看它非常小，但从架构上看，它是后续 11 节内容的统一起点。
 
-## 8、原文链接
-
-- https://learn.shareai.run/zh/s01/

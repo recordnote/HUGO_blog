@@ -38,18 +38,38 @@ weight: 1
 如果模型主动要求 -> 手动触发 compact
 ```
 
-### 压缩流程图
+### 本节架构图
 
 ```mermaid
-flowchart TD
-    M[消息历史增长] --> C1[micro_compact]
-    C1 --> J{超过阈值?}
-    J -- 否 --> L[继续调用 LLM]
-    J -- 是 --> C2[auto_compact]
-    C2 --> T[完整 transcript 落盘]
-    C2 --> S[生成摘要消息]
+flowchart TB
+    subgraph L1["输入层"]
+        M[消息持续增长]
+    end
+
+    subgraph L2["治理层"]
+        C1[轻量压缩 micro_compact]
+        J{达到压缩阈值?}
+        C2[自动摘要压缩 auto_compact]
+        C3[主动 compact]
+    end
+
+    subgraph L3["存储层"]
+        T[完整历史落盘]
+        S[生成摘要上下文]
+    end
+
+    subgraph L4["推理层"]
+        L[继续推理]
+    end
+
+    M --> C1
+    C1 --> J
+    J -- 否 --> L
+    J -- 是 --> C2
+    C2 --> T
+    C2 --> S
     S --> L
-    L --> C3[模型可主动 compact]
+    L --> C3
 ```
 
 ## 3、第一层：micro_compact
@@ -209,6 +229,3 @@ demo-s06/
 
 从这里开始，Agent 才真正具备了长会话持续工作的基础条件。
 
-## 10、原文链接
-
-- https://learn.shareai.run/zh/s06/

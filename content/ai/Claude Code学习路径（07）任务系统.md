@@ -48,14 +48,40 @@ task1 -> task3
 task2 + task3 -> task4
 ```
 
-### 任务依赖图
+### 本节架构图
 
 ```mermaid
-graph TD
-    T1[task1: 解析需求] --> T2[task2: 编写代码]
-    T1 --> T3[task3: 补充测试]
-    T2 --> T4[task4: 集成验证]
-    T3 --> T4
+flowchart TB
+    subgraph L1["任务入口层"]
+        N[新任务创建]
+    end
+
+    subgraph L2["调度层"]
+        M[TaskManager]
+        D[DAG 依赖关系]
+    end
+
+    subgraph L3["持久化层"]
+        T1[task_1.json]
+        T2[task_2.json]
+        T3[task_3.json]
+        T4[task_4.json]
+    end
+
+    subgraph L4["执行结果层"]
+        U[依赖解除 / 状态推进]
+    end
+
+    N --> M
+    M --> D
+    D --> T1
+    D --> T2
+    D --> T3
+    D --> T4
+    T1 --> U
+    T2 --> U
+    T3 --> U
+    T4 --> U
 ```
 
 ## 3、任务落盘
@@ -225,6 +251,3 @@ demo-s07/
 
 这一步为后面的后台任务、多 Agent 团队和 worktree 隔离打下了协调基础。
 
-## 10、原文链接
-
-- https://learn.shareai.run/zh/s07/

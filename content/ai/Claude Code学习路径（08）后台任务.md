@@ -36,15 +36,34 @@ weight: 1
 通知队列: 后台结果回流
 ```
 
-### 异步执行图
+### 本节架构图
 
 ```mermaid
-flowchart LR
-    L[主 Agent 循环] --> BG[后台任务管理器]
-    BG --> TH[后台线程]
-    TH --> Q[通知队列]
-    Q --> L
-    L --> N[下一轮推理吸收结果]
+flowchart TB
+    subgraph L1["控制层"]
+        L[主循环]
+    end
+
+    subgraph L2["异步调度层"]
+        BG[后台任务管理器]
+        TH[异步执行线程]
+    end
+
+    subgraph L3["状态层"]
+        Q[通知队列]
+        TS[任务状态表]
+    end
+
+    subgraph L4["反馈层"]
+        N[下一轮统一吸收结果]
+    end
+
+    L --> BG
+    BG --> TH
+    TH --> Q
+    TH --> TS
+    Q --> N
+    N --> L
 ```
 
 这样主线程在等待一个长命令时，还可以继续推动其他动作。
@@ -209,6 +228,3 @@ demo-s08/
 
 后台任务机制的重点不是线程本身，而是结果如何回到主循环中继续影响后续决策。
 
-## 9、原文链接
-
-- https://learn.shareai.run/zh/s08/

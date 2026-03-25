@@ -39,17 +39,38 @@ weight: 1
     lead.jsonl
 ```
 
-### 团队通信图
+### 本节架构图
 
 ```mermaid
-flowchart TD
-    Lead[lead] --> Bus[MessageBus]
-    Alice[alice] --> Bus
-    Bob[bob] --> Bus
-    Bus --> IA[alice.jsonl]
-    Bus --> IB[bob.jsonl]
-    Bus --> IL[lead.jsonl]
-    Config[config.json] --> Team[TeammateManager]
+flowchart TB
+    subgraph L1["协作层"]
+        Lead[主控 Agent]
+        Alice[执行 Agent Alice]
+        Bob[执行 Agent Bob]
+    end
+
+    subgraph L2["通信层"]
+        Bus[消息总线]
+    end
+
+    subgraph L3["状态层"]
+        Config[团队配置]
+        Team[队友管理器]
+    end
+
+    subgraph L4["收件箱层"]
+        IA[alice 收件箱]
+        IB[bob 收件箱]
+        IL[lead 收件箱]
+    end
+
+    Lead --> Bus
+    Alice --> Bus
+    Bob --> Bus
+    Bus --> IA
+    Bus --> IB
+    Bus --> IL
+    Config --> Team
     Team --> Lead
     Team --> Alice
     Team --> Bob
@@ -223,6 +244,3 @@ demo-s09/
 
 从这里开始，Agent 系统不再只有一个主循环，而是开始出现真正意义上的团队结构。
 
-## 10、原文链接
-
-- https://learn.shareai.run/zh/s09/
