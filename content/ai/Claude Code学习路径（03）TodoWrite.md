@@ -4,6 +4,10 @@ date: 2025-11-20T14:21:26+08:00
 lastmod: 2025-11-20T14:21:26+08:00
 author: Lin
 avatar: /me/yy.jpg
+cover: /img/ai6.png
+images:
+  - /img/ai6.png 
+nocover: true
 categories:
   - AI
 tags:
