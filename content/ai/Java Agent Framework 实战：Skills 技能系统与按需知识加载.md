@@ -18,9 +18,9 @@ weight: 1
 
 当 Agent 需要掌握越来越多的领域知识时，一个最直接、也最容易失控的做法，就是把所有规则、说明、操作手册都塞进系统提示词里。但这种方式的代价很明显：prompt 会越来越重，而且大多数知识在当前任务里根本用不上。
 
-Java Agent Framework 在 Skills 教程里提供了一套更工程化的解法：把知识组织成独立技能目录，通过 `SkillRegistry` 管理，再由 `SkillsAgentHook` 把技能摘要注入系统提示，真正需要时再通过 `read_skill(skill_name)` 按需读取完整内容。
+Java Agent Framework 在 Skills 这部分能力设计里提供了一套更工程化的解法：把知识组织成独立技能目录，通过 `SkillRegistry` 管理，再由 `SkillsAgentHook` 把技能摘要注入系统提示，真正需要时再通过 `read_skill(skill_name)` 按需读取完整内容。
 
-本文基于官方教程 **Skills** 页面内容，系统梳理 Java Agent Framework 的技能系统设计、目录规范、核心 API、Agent 集成方式和生产环境下的使用建议。
+本文系统梳理 Java Agent Framework 的技能系统设计、目录规范、核心 API、Agent 集成方式和生产环境下的使用建议。
 
 ## 1、为什么需要 Skills
 
@@ -405,7 +405,7 @@ flowchart LR
 
 ## 14、总结
 
-官方教程 **Skills** 的价值，在于它把“知识如何进入 Agent”这件事做成了一套清晰、可维护、可扩展的机制：
+Skills 这部分能力的价值，在于它把“知识如何进入 Agent”这件事做成了一套清晰、可维护、可扩展的机制：
 
 - 用 `SkillRegistry` 统一管理技能来源
 - 用 `FileSystemSkillRegistry` 和 `ClasspathSkillRegistry` 适配不同部署方式

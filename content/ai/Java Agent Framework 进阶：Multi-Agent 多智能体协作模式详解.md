@@ -20,7 +20,7 @@ weight: 1
 
 Java Agent Framework 在进阶部分给出的答案，就是 **Multi-Agent**。它不是简单地多起几个 Agent，而是提供了一套明确的协作模式：顺序执行、并行执行、智能路由、监督者编排，以及可自定义的 FlowAgent 工作流。
 
-本文基于官方教程 **Multi-agent** 页面内容，系统梳理 Java Agent Framework 的多智能体设计思路、核心 API、上下文传递方式和典型协作模式，帮助你从“一个 Agent 干所有活”走向“多个 Agent 分工协作”。
+本文系统梳理 Java Agent Framework 的多智能体设计思路、核心 API、上下文传递方式和典型协作模式，帮助你从“一个 Agent 干所有活”走向“多个 Agent 分工协作”。
 
 ## 1、为什么需要 Multi-Agent
 
@@ -534,7 +534,7 @@ flowchart LR
 
 ## 12、总结
 
-官方教程 **Multi-agent** 的价值，不只是列出了几个类名，而是把多智能体设计背后的几件关键事情讲清楚了：
+Multi-Agent 这部分内容的价值，不只是列出了几个类名，而是把多智能体设计背后的几件关键事情讲清楚了：
 
 - 多 Agent 不是数量问题，而是任务拆分与上下文治理问题
 - `Tool Calling` 和 `Handoffs` 是两种不同的控制哲学
