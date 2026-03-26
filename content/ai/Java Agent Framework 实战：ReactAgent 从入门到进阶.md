@@ -4,9 +4,9 @@ date: 2026-02-01T15:00:00+08:00
 lastmod: 2026-02-01T15:00:00+08:00
 author: Lin
 avatar: /me/yy.jpg
-cover: /img/ai.png
+cover: /img/agent.png
 images:
-  - /img/ai.png
+  - /img/agent.png
 categories:
   - AI
 tags:
