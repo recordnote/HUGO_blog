@@ -12,7 +12,7 @@ categories:
   - AI
 tags:
   - Agent
-  - 评测
+  - AI应用
 slug: agent-release-evaluation
 weight: 1
 description: "把提示词、模型、工具和索引组成发布版本，在无副作用回放中筛查回归问题。"

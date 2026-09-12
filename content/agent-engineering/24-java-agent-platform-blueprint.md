@@ -12,7 +12,7 @@ categories:
   - 架构设计
 tags:
   - Java
-  - Agent架构
+  - Agent
 slug: java-agent-platform-blueprint
 weight: 1
 description: "串起身份、编排、知识、工具和模型网关，给出可以分阶段实现的平台设计。"

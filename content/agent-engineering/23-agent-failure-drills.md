@@ -12,7 +12,7 @@ categories:
   - 架构设计
 tags:
   - Agent
-  - 可靠性
+  - 架构设计
 slug: agent-failure-drills
 weight: 1
 description: "围绕三个高风险故障定义注入点、预期终态和恢复证据，检验治理链路是否有效。"

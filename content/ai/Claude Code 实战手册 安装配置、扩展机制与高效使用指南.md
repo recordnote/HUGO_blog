@@ -10,9 +10,7 @@ images:
 categories:
   - AI
 tags:
-  - AI
   - Agent
-  - Claude Code
 weight: 1
 ---
 

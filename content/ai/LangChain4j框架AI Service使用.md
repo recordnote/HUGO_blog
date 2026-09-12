@@ -10,7 +10,7 @@ images:
 categories:
   - AI
 tags:
-  - AI
+  - AI应用
 weight: 1
 ---
 

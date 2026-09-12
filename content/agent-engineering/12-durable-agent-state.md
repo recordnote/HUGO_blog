@@ -12,7 +12,7 @@ categories:
   - 架构设计
 tags:
   - Agent
-  - 状态机
+  - 架构设计
 slug: durable-agent-state
 weight: 1
 description: "将任务事实持久化，用租约和版本校验处理进程重启与重复调度。"

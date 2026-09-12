@@ -12,7 +12,6 @@ categories:
   - AI
 tags:
   - Agent
-  - 工程实践
 slug: agent-portfolio-evidence
 weight: 1
 description: "设计可演示的任务闭环、失败恢复和评测产物，让技术主张对应明确证据。"

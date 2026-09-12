@@ -45,7 +45,8 @@ hasCJKLanguage = true
   avatar = "/me/yy.jpg"
   headerTitle = "Lin 的博客"
   motto = "A merry heart goes all the way."
-  # maxTags = 5
+  maxTags = 6
+  featuredTags = ["Agent", "AI应用", "Java", "架构设计", "RAG", "微服务"]
   # categoriesLimitInHeader = 6 # deprecated
   # headerBottomText = "" # deprecated
 

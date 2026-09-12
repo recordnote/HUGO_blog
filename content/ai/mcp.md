@@ -10,7 +10,7 @@ images:
 categories:
   - AI
 tags:
-  - AI
+  - Agent
 weight: 1
 ---
 

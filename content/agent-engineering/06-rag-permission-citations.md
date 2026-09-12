@@ -12,7 +12,7 @@ categories:
   - AI
 tags:
   - RAG
-  - 权限设计
+  - 安全
 slug: rag-permission-citations
 weight: 1
 description: "让身份过滤、文档版本和引用校验贯穿检索链路，避免越权内容进入模型上下文。"

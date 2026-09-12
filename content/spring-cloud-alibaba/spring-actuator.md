@@ -10,7 +10,7 @@ images:
 categories:
   - Spring框架
 tags:
-  - Spring
+  - Java
 weight: 1
 ---
 Spring Boot Actuator可以帮助你**监控和管理**Spring Boot应用，比如健康检查、审计、统计和HTTP追踪等。所有的这些特性可以通过JMX或者HTTP endpoints来获得。

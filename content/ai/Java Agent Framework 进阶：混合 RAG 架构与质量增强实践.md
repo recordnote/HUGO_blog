@@ -10,7 +10,7 @@ images:
 categories:
   - AI
 tags:
-  - AI
+  - RAG
 weight: 1
 ---
 

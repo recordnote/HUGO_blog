@@ -12,7 +12,7 @@ categories:
   - 架构设计
 tags:
   - Agent
-  - 分布式事务
+  - 架构设计
 slug: approval-idempotency
 weight: 1
 description: "把审批绑定到具体命令，用业务幂等和结果对账处理超时后的不确定执行状态。"

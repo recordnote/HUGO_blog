@@ -12,7 +12,6 @@ categories:
   - 架构设计
 tags:
   - Java
-  - SSE
 slug: sse-streaming-cancellation
 weight: 1
 description: "拆开任务生命周期和连接生命周期，处理断线、重连、取消和事件缓冲。"

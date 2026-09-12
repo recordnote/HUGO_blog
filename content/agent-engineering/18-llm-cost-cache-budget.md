@@ -11,8 +11,7 @@ images:
 categories:
   - AI
 tags:
-  - 大模型应用
-  - 成本治理
+  - AI应用
 slug: llm-cost-cache-budget
 weight: 1
 description: "按成功任务核算成本，在权限和知识版本约束下评估缓存与上下文压缩。"

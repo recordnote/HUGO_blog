@@ -12,7 +12,7 @@ categories:
   - AI
 tags:
   - Java
-  - 大模型应用
+  - AI应用
 slug: structured-output-contract
 weight: 1
 description: "用结构、语义和权限三层校验，阻止一段格式正确的模型输出直接变成错误业务操作。"

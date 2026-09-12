@@ -11,7 +11,7 @@ images:
 categories:
   - 架构设计
 tags:
-  - PostgreSQL
+  - 数据库
   - RAG
 slug: rag-postgres-pgvector
 weight: 1

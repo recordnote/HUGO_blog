@@ -11,7 +11,7 @@ images:
 categories:
   - 架构设计
 tags:
-  - 大模型应用
+  - AI应用
   - 架构设计
 slug: model-gateway-routing
 weight: 1

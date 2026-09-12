@@ -12,7 +12,7 @@ categories:
   - AI
 tags:
   - Agent
-  - 评测
+  - AI应用
 slug: agent-evaluation-baseline
 weight: 1
 description: "为知识问答和工单创建建立固定样本、终态断言与失败分类，避免凭感觉调提示词。"

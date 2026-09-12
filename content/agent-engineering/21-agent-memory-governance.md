@@ -12,7 +12,6 @@ categories:
   - AI
 tags:
   - Agent
-  - 上下文工程
 slug: agent-memory-governance
 weight: 1
 description: "将偏好、任务事实和证据分开存储，建立可撤销、可追溯的记忆生命周期。"

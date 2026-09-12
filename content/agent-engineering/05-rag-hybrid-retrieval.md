@@ -12,7 +12,6 @@ categories:
   - AI
 tags:
   - RAG
-  - 检索
 slug: rag-hybrid-retrieval
 weight: 1
 description: "区分召回失败和排序失败，用对照实验判断关键词、向量和重排分别带来什么。"

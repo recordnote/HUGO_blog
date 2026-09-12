@@ -8,7 +8,7 @@ cover: /img/spring.jpg
 categories:
   - spring
 tags:
-  - spring
+  - Java
 weight: 1
 ---
 

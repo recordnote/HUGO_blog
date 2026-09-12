@@ -8,7 +8,7 @@ cover: /img/spring.jpg
 categories:
   - spring
 tags:
-  - spring
+  - Java
 weight: 1
 ---
 > 由于工作上的原因，需要进行定时任务的动态增删改查，网上大部分资料都是整合quertz框架实现的。查阅了一些资料，发现springBoot本身就支持实现定时任务的动态控制。并进行改进，现支持任意多参数定时任务配置
@@ -498,4 +498,4 @@ public class SpringContextUtils implements ApplicationContextAware {
 
 ### 8.总结
 
- 移步github获取简单demo上手实践 
+ 移步github获取简单demo上手实践

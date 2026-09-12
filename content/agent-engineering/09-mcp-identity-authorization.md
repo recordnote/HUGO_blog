@@ -11,8 +11,8 @@ images:
 categories:
   - AI
 tags:
-  - MCP
-  - 权限设计
+  - Agent
+  - 安全
 slug: mcp-identity-authorization
 weight: 1
 description: "区分连接认证、用户授权和资源权限，避免把工具连通误认为业务授权已经完成。"

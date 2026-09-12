@@ -12,7 +12,7 @@ categories:
   - AI
 tags:
   - Agent
-  - 安全设计
+  - 安全
 slug: prompt-injection-defense
 weight: 1
 description: "围绕知识库和工具返回建立信任分层，在执行层控制模型可触发的操作。"

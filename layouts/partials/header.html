@@ -1,0 +1,66 @@
+<header class="ui basic very padded segment dream-header">
+  {{ with .Site.Params.avatar }}
+  <div class="ui small circular image">
+    <img src="{{ . | relURL }}" alt="avatar" />
+  </div>
+  {{ end }}
+
+  <div class="content">
+    <h1 class="ui medium header">
+      {{ .Site.Params.headerTitle }}
+      <span class="sub header">{{ .Site.Params.motto | safeHTML }}</span>
+    </h1>
+
+    <nav class="ui horizontal list" aria-label="博客导航">
+      {{ if gt (len (where .Site.RegularPages "Section" "==" "posts")) 0 }}
+      <a class="item" href="{{ "posts" | relLangURL }}" aria-label="{{ T "archives" }}">
+        <i class="archive icon" aria-hidden="true"></i>
+      </a>
+      {{ end }}
+      <a class="item" href="{{ "categories" | relLangURL }}" aria-label="{{ T "allCategories" }}">
+        <i class="th list icon" aria-hidden="true"></i>
+      </a>
+      <a class="item" href="{{ "tags" | relLangURL }}" aria-label="{{ T "allTags" }}">
+        <i class="tags icon" aria-hidden="true"></i>
+      </a>
+    </nav>
+
+    {{ with .Site.Taxonomies.tags }}
+      {{ $taxonomy := . }}
+      {{ $tags := slice }}
+      {{ $selected := slice }}
+      {{ range $.Site.Params.featuredTags }}
+        {{ $name := . }}
+        {{ range $taxonomy }}
+          {{ if eq .Page.Title $name }}
+            {{ $tags = $tags | append (dict "title" .Page.Title "link" .Page.RelPermalink) }}
+            {{ $selected = $selected | append .Page.RelPermalink }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+      {{ range $taxonomy.ByCount }}
+        {{ if not (in $selected .Page.RelPermalink) }}
+          {{ $tags = $tags | append (dict "title" .Page.Title "link" .Page.RelPermalink) }}
+        {{ end }}
+      {{ end }}
+      {{ $limit := int ($.Site.Params.maxTags | default 6) }}
+      <nav class="dream-topic-nav" aria-label="文章主题">
+        <div class="dream-tags dream-tags-primary">
+          {{ range first $limit $tags }}
+          <a class="ui label" href="{{ .link }}">{{ .title }}</a>
+          {{ end }}
+        </div>
+        {{ if gt (len $tags) $limit }}
+        <details class="dream-tags-more">
+          <summary>更多主题 <span>（{{ sub (len $tags) $limit }}）</span></summary>
+          <div class="dream-tags dream-tags-secondary">
+            {{ range after $limit $tags }}
+            <a class="ui label" href="{{ .link }}">{{ .title }}</a>
+            {{ end }}
+          </div>
+        </details>
+        {{ end }}
+      </nav>
+    {{ end }}
+  </div>
+</header>

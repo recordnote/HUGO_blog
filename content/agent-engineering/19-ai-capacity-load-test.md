@@ -12,7 +12,7 @@ categories:
   - 架构设计
 tags:
   - Java
-  - 性能测试
+  - 架构设计
 slug: ai-capacity-load-test
 weight: 1
 description: "用到达率、服务时间和资源池解释吞吐上限，设计能暴露排队问题的负载实验。"

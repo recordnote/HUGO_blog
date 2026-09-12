@@ -12,7 +12,6 @@ categories:
   - AI
 tags:
   - Agent
-  - 工具调用
 slug: tool-contract-design
 weight: 1
 description: "把粗粒度存量接口拆成语义明确、可校验且可审计的 Agent 工具。"

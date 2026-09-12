@@ -12,7 +12,7 @@ categories:
   - 架构设计
 tags:
   - 消息队列
-  - 分布式事务
+  - 架构设计
 slug: transactional-outbox-agent
 weight: 1
 description: "用事务内事件和消费去重衔接数据库与消息系统，明确至少一次投递下的责任边界。"

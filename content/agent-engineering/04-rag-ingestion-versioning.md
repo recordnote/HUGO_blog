@@ -12,7 +12,6 @@ categories:
   - AI
 tags:
   - RAG
-  - 数据工程
 slug: rag-ingestion-versioning
 weight: 1
 description: "从来源版本到索引发布，设计能够更新、删除和回滚的知识入库流水线。"

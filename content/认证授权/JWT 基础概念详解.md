@@ -10,7 +10,7 @@ images:
 categories:
   - 认证授权
 tags:
-  - 认证授权
+  - 安全
 weight: 1
 ---
 

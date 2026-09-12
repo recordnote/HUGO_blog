@@ -60,3 +60,48 @@ body.dark .os-viewport {
 body.dark .markdown-body .highlight pre {
   background: #222 !important;
 }
+
+/* Keep the topic navigation compact as the article collection grows. */
+.dream-header .dream-topic-nav .dream-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.dream-header .dream-topic-nav .dream-tags .ui.label {
+  margin: 0;
+}
+
+.dream-tags-more {
+  margin-top: 0.75rem;
+}
+
+.dream-tags-more summary {
+  width: fit-content;
+  cursor: pointer;
+  color: inherit;
+  font-size: 0.9rem;
+}
+
+.dream-tags-more summary span {
+  opacity: 0.65;
+}
+
+.dream-tags-more summary:focus-visible {
+  outline: 2px solid seagreen;
+  outline-offset: 4px;
+}
+
+.dream-header .dream-tags-secondary {
+  margin-top: 0.75rem;
+}
+
+@media screen and (max-width: 768px) {
+  .dream-header .dream-topic-nav .dream-tags {
+    justify-content: center;
+  }
+
+  .dream-tags-more summary {
+    margin-inline: auto;
+  }
+}

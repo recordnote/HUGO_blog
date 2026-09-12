@@ -12,7 +12,6 @@ categories:
   - 架构设计
 tags:
   - Java
-  - 并发
 slug: java-virtual-thread-bulkhead
 weight: 1
 description: "把线程调度能力与下游资源配额分开治理，避免更轻量的线程放大依赖压力。"

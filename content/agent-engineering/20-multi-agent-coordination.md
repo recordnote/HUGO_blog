@@ -11,7 +11,7 @@ images:
 categories:
   - AI
 tags:
-  - Multi-Agent
+  - Agent
   - 架构设计
 slug: multi-agent-coordination
 weight: 1

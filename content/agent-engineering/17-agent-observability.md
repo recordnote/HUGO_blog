@@ -12,7 +12,7 @@ categories:
   - AI
 tags:
   - Agent
-  - 可观测性
+  - 运维
 slug: agent-observability
 weight: 1
 description: "关联任务、模型、检索和工具调用，用失败类别解释耗时与成本。"
