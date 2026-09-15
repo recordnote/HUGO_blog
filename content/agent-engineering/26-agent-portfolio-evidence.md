@@ -1,8 +1,9 @@
 ---
 title: "Agent 项目展示设计：把架构文章连接到可验证证据"
-date: 2026-09-16T10:00:00+08:00
-lastmod: 2026-09-12T10:00:00+08:00
-draft: true
+date: 2026-09-16T08:00:00+08:00
+publishDate: 2026-09-16T08:00:00+08:00
+lastmod: 2026-09-15T08:00:00+08:00
+draft: false
 author: Lin
 avatar: /me/yy.jpg
 cover: /img/agent.png
@@ -21,7 +22,7 @@ description: "设计可演示的任务闭环、失败恢复和评测产物，让
 
 <!--more-->
 
-> 本文为计划于 2026-09-16 发布的草稿，初稿整理于 2026-09-12。示例为方案设计，参数用于说明方法，不代表已上线项目或实测成果。
+> 本文于 2026-09-12 起草，2026-09-15 整理为预备发布稿。示例为方案设计，参数用于说明方法，不代表已上线项目或实测成果。
 
 ## 展示目标是一条可以检查的证据链
 
@@ -81,4 +82,4 @@ results/      带版本的原始结果与摘要
 
 ---
 
-[查看系列导读与阅读路线]({{< relref "/agent-engineering/overview.md" >}})
+[延伸阅读：Java 企业 Agent 平台蓝图]({{< relref "/agent-engineering/24-java-agent-platform-blueprint.md" >}})

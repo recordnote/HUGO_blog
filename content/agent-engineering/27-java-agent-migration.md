@@ -1,8 +1,9 @@
 ---
 title: "存量 Java 系统接入 Agent：渐进迁移与演进路线"
-date: 2026-09-23T10:00:00+08:00
-lastmod: 2026-09-12T10:00:00+08:00
-draft: true
+date: 2026-09-23T08:00:00+08:00
+publishDate: 2026-09-23T08:00:00+08:00
+lastmod: 2026-09-15T08:00:00+08:00
+draft: false
 author: Lin
 avatar: /me/yy.jpg
 cover: /img/springcloud.jfif
@@ -22,7 +23,7 @@ description: "从只读辅助开始逐步开放写操作，用明确的进入条
 
 <!--more-->
 
-> 本文为计划于 2026-09-23 发布的草稿，初稿整理于 2026-09-12。示例为方案设计，参数用于说明方法，不代表已上线项目或实测成果。
+> 本文于 2026-09-12 起草，2026-09-15 整理为预备发布稿。示例为方案设计，参数用于说明方法，不代表已上线项目或实测成果。
 
 ## 从现有服务能力开始
 
@@ -84,4 +85,4 @@ description: "从只读辅助开始逐步开放写操作，用明确的进入条
 
 ---
 
-[查看系列导读与阅读路线]({{< relref "/agent-engineering/overview.md" >}})
+[延伸阅读：Java 企业 Agent 平台蓝图]({{< relref "/agent-engineering/24-java-agent-platform-blueprint.md" >}})
